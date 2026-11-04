@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vai Ter Estrada | Mídia kit</title>
+<meta name="description" content="Mídia kit do Vai Ter Estrada: Nath e João criam conteúdo sobre camping, viagens, hospedagens e experiências ao ar livre. Números atualizados direto do Instagram.">
+<meta property="og:title" content="Vai Ter Estrada | Mídia kit">
+<meta property="og:description" content="Camping, viagens e experiências ao ar livre por Nath e João. Números ao vivo do Instagram.">
+<meta property="og:image" content="img/barraca-por-do-sol.jpg">
+<link rel="icon" type="image/png" href="img/logo.png">
+<link rel="apple-touch-icon" href="img/logo-fundo-branco.webp">
+<meta name="theme-color" content="#5B2A14">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,500;0,600;0,700;0,800;1,600;1,700;1,800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ===== PALETA (camping): troque as cores aqui ===== */
+  :root{
+    --areia:#F5EFE3;        /* fundo claro principal */
+    --papel:#FFFCF6;        /* janelas e cartões */
+    --terra:#5B2A14;        /* marrom da marca */
+    --terra-2:#7A3B1D;
+    --terra-escura:#3B1A0B;
+    --mato:#4D5B2F;         /* verde oliva do logo */
+    --mato-claro:#E1E6CF;
+    --ceu:#27318A;          /* azul dos títulos */
+    --ceu-claro:#DDE1F4;
+    --sol:#E9A23B;          /* pôr do sol */
+    --sol-claro:#FBE8C6;
+    --tinta:#2B1A10;
+    --tinta-2:#6E5646;
+    --linha:rgba(43,26,16,.12);
+    --sombra:0 1px 2px rgba(43,26,16,.05),0 16px 40px rgba(43,26,16,.12);
+    --titulo:'Inter Tight',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --texto:'Work Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    --max:1160px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:72px;-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--areia);color:var(--tinta);font-family:var(--texto);font-size:16px;line-height:1.6;overflow-x:hidden}
+  img,video{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--titulo);margin:0;line-height:1.05;letter-spacing:-.03em}
+  h2{font-size:clamp(2.2rem,5.4vw,4.2rem);font-weight:800;color:var(--ceu)}
+  h2 em,h1 em{font-style:italic;font-weight:600}
+  p{margin:0}
+  button{font:inherit}
+  :focus-visible{outline:2px solid var(--sol);outline-offset:3px;border-radius:6px}
+  .container{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+  .secao{padding:96px 0}
+  .sobretitulo{display:inline-flex;align-items:center;gap:10px;font-size:.74rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-2)}
+  .sobretitulo::before{content:"";width:28px;height:1px;background:currentColor}
+  .cab{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:44px;flex-wrap:wrap}
+  .cab h2{margin-top:14px}
+  .cab p{max-width:430px;color:var(--tinta-2)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 24px;border-radius:999px;font-weight:600;font-size:.95rem;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .25s,background .25s,color .25s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-sol{background:var(--sol);color:var(--terra-escura)}
+  .btn-sol:hover{background:#f2b558}
+  .btn-claro{border-color:rgba(255,252,246,.55);color:var(--papel);background:rgba(255,252,246,.06)}
+  .btn-claro:hover{background:var(--papel);color:var(--terra)}
+  .btn-terra{background:var(--terra);color:var(--papel)}
+
+  /* janelas estilo mac (igual ao portfólio) */
+  .janela{background:var(--papel);border-radius:20px;box-shadow:var(--sombra);overflow:hidden}
+  .janela-barra{display:flex;align-items:center;gap:14px;height:42px;padding:0 16px;background:var(--sol-claro);border-bottom:1px solid var(--linha)}
+  .pontos{display:flex;gap:7px}.pontos i{width:11px;height:11px;border-radius:50%;background:#ff5f57}.pontos i:nth-child(2){background:#febc2e}.pontos i:nth-child(3){background:#28c840}
+  .url{flex:1;min-width:0;height:24px;border-radius:999px;background:var(--papel);font-size:.72rem;color:var(--tinta-2);display:flex;align-items:center;padding:0 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .janela-corpo{padding:52px}
+
+  /* revelar ao rolar */
+  .revelar{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+  .revelar.visivel{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.revelar{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+  /* ===== TOPO ===== */
+  .topo{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,box-shadow .3s}
+  .topo.rolou{background:rgba(245,239,227,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--linha)}
+  .topo-nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:20px}
+  .marca{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--titulo);font-weight:800;font-size:1.15rem;letter-spacing:-.02em;color:var(--papel);transition:color .3s}
+  .marca img{width:38px;height:38px;border-radius:50%}
+  .topo.rolou .marca{color:var(--terra)}
+  .menu{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+  .menu a{text-decoration:none;font-size:.88rem;font-weight:500;color:var(--papel);transition:color .3s}
+  .topo.rolou .menu a{color:var(--tinta)}
+  .menu a:hover{text-decoration:underline;text-underline-offset:5px}
+  .topo .btn{padding:10px 18px;font-size:.85rem}
+  @media (max-width:860px){.menu{display:none}}
+
+  /* ===== CAPA ===== */
+  .capa{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;color:var(--papel);overflow:hidden;background:var(--terra-escura)}
+  .capa-fundo{position:absolute;inset:0;background:url(img/barraca-por-do-sol.jpg) center 62%/cover no-repeat;transform:scale(1.06);animation:respira 18s ease-in-out infinite alternate}
+  @keyframes respira{to{transform:scale(1.14) translateY(-1.5%)}}
+  @media (prefers-reduced-motion:reduce){.capa-fundo{animation:none}}
+  .capa::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(59,26,11,.45) 0%,rgba(59,26,11,.05) 35%,rgba(59,26,11,.55) 68%,rgba(59,26,11,.92) 100%)}
+  .capa-conteudo{position:relative;z-index:1;width:100%;padding-top:130px;padding-bottom:56px}
+  .capa-grade{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:end}
+  .ao-vivo{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;letter-spacing:.04em;background:rgba(255,252,246,.14);border:1px solid rgba(255,252,246,.3);padding:6px 12px;border-radius:999px;backdrop-filter:blur(6px)}
+  .ao-vivo i{width:8px;height:8px;border-radius:50%;background:#7CDB6A;box-shadow:0 0 0 0 rgba(124,219,106,.7);animation:pulso 1.8s infinite}
+  @keyframes pulso{70%{box-shadow:0 0 0 9px rgba(124,219,106,0)}100%{box-shadow:0 0 0 0 rgba(124,219,106,0)}}
+  .capa h1{font-size:clamp(3.4rem,11vw,8.6rem);font-weight:800;letter-spacing:-.05em;line-height:.88;margin:22px 0 14px;text-transform:lowercase}
+  .capa h1 span{display:block}
+  .capa h1 em{color:var(--sol);font-weight:700}
+  .capa-sub{font-size:1.1rem;max-width:520px;color:rgba(255,252,246,.88)}
+  .capa-sub b{color:#fff}
+  .capa-botoes{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+  .capa-selo{justify-self:end;position:relative;width:min(300px,70vw);aspect-ratio:1}
+  .capa-selo img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 18px 40px rgba(0,0,0,.4))}
+  .selo-giro{position:absolute;inset:-11%;animation:gira 30s linear infinite}
+  .selo-giro text{font:700 10.5px var(--texto);letter-spacing:.32em;fill:rgba(255,252,246,.85);text-transform:uppercase}
+  @keyframes gira{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion:reduce){.selo-giro{animation:none}}
+  .capa-numeros{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:44px;border-top:1px solid rgba(255,252,246,.25)}
+  .capa-numeros div{padding:18px 18px 0 0}
+  .capa-numeros div+div{padding-left:18px;border-left:1px solid rgba(255,252,246,.18)}
+  .capa-numeros strong{display:block;font-family:var(--titulo);font-size:clamp(1.6rem,3.4vw,2.5rem);font-weight:800;letter-spacing:-.03em;line-height:1.1}
+  .capa-numeros span{font-size:.8rem;color:rgba(255,252,246,.75)}
+  @media (max-width:860px){
+    .capa-grade{grid-template-columns:1fr}
+    .capa-selo{display:none}
+    .capa-conteudo{padding-top:110px}
+    .topo .btn{padding:9px 14px;font-size:.8rem}
+    .capa-numeros{grid-template-columns:repeat(2,1fr)}
+    .capa-numeros div:nth-child(3){padding-left:0;border-left:0}
+    .capa-numeros div:nth-child(n+3){border-top:1px solid rgba(255,252,246,.18);margin-top:14px}
+  }
+
+  /* ===== SOBRE ===== */
+  .sobre{background:var(--areia)}
+  .sobre-grade{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+  .filme{position:relative}
+  .filme img{border-radius:16px;box-shadow:var(--sombra);transform:rotate(-2.5deg);transition:transform .5s}
+  .filme:hover img{transform:rotate(0) scale(1.02)}
+  .filme .etiqueta{position:absolute;right:-10px;bottom:28px;background:var(--sol);color:var(--terra-escura);font-family:var(--titulo);font-weight:800;padding:10px 16px;border-radius:12px;transform:rotate(4deg);box-shadow:var(--sombra)}
+  .sobre-texto h2{margin:14px 0 22px}
+  .sobre-texto p+p{margin-top:14px}
+  .sobre-texto p{color:var(--tinta-2);font-size:1.04rem}
+  .temas{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0}
+  .temas span{background:var(--mato-claro);color:var(--mato);font-weight:600;font-size:.84rem;padding:7px 14px;border-radius:999px}
+  .frase{font-family:var(--titulo);font-style:italic;font-weight:700;font-size:1.35rem;color:var(--terra);line-height:1.3;border-left:3px solid var(--sol);padding-left:16px;margin-top:8px}
+  @media (max-width:860px){.sobre-grade{grid-template-columns:1fr}.filme{max-width:320px;margin:0 auto}.janela-corpo{padding:28px 20px}}
+
+  /* ===== NÚMEROS ===== */
+  .numeros{background:var(--terra);color:var(--papel)}
+  .numeros h2{color:var(--sol-claro)}
+  .numeros .cab p,.numeros .sobretitulo{color:rgba(255,252,246,.75)}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .kpi{background:rgba(255,252,246,.07);border:1px solid rgba(255,252,246,.14);border-radius:18px;padding:22px;transition:transform .3s,background .3s}
+  .kpi:hover{transform:translateY(-3px);background:rgba(255,252,246,.11)}
+  .kpi-rotulo{font-size:.8rem;color:rgba(255,252,246,.7);display:flex;align-items:center;gap:6px}
+  .kpi-valor{font-family:var(--titulo);font-weight:800;font-size:clamp(2rem,4vw,2.9rem);letter-spacing:-.03em;line-height:1.1;margin:8px 0 4px;color:#fff}
+  .kpi-sub{font-size:.8rem;color:rgba(255,252,246,.6)}
+  .kpi.destaque{background:var(--sol);border-color:var(--sol);color:var(--terra-escura)}
+  .kpi.destaque .kpi-rotulo,.kpi.destaque .kpi-sub{color:rgba(59,26,11,.75)}
+  .kpi.destaque .kpi-valor{color:var(--terra-escura)}
+  .numeros-baixo{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;margin-top:14px}
+  .painel{background:rgba(255,252,246,.07);border:1px solid rgba(255,252,246,.14);border-radius:18px;padding:24px}
+  .painel h3{font-size:1.1rem;font-weight:700;margin-bottom:4px}
+  .painel .muted{font-size:.82rem;color:rgba(255,252,246,.6)}
+  .grafico{position:relative;margin-top:16px}
+  .grafico svg{width:100%;height:auto;overflow:visible}
+  .grafico .area{fill:url(#grad-area)}
+  .grafico .linha{fill:none;stroke:var(--sol);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:var(--comp);stroke-dashoffset:var(--comp);transition:stroke-dashoffset 1.8s ease}
+  .grafico.visivel .linha{stroke-dashoffset:0}
+  .grafico circle{fill:var(--terra);stroke:var(--sol);stroke-width:3;cursor:pointer;transition:r .2s}
+  .grafico circle:hover{r:8}
+  .grafico .rot{font:600 11px var(--texto);fill:rgba(255,252,246,.65)}
+  .grafico .val{font:800 13px var(--titulo);fill:#fff}
+  .tiktok-linha{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-bottom:1px dashed rgba(255,252,246,.2)}
+  .tiktok-linha strong{font-family:var(--titulo);font-size:1.5rem;font-weight:800}
+  .redes-mini{display:flex;flex-direction:column;gap:12px}
+  .rede{display:flex;align-items:center;gap:12px;text-decoration:none;padding:14px;border-radius:14px;background:rgba(255,252,246,.06);transition:background .25s}
+  .rede:hover{background:rgba(255,252,246,.13)}
+  .rede svg{width:22px;height:22px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .rede b{font-family:var(--titulo);font-size:1.15rem}
+  .rede small{display:block;color:rgba(255,252,246,.6);font-size:.78rem}
+  .atualizado{margin-top:18px;font-size:.78rem;color:rgba(255,252,246,.6)}
+  @media (max-width:960px){.kpis{grid-template-columns:repeat(2,1fr)}.numeros-baixo{grid-template-columns:1fr}}
+
+  /* ===== VÍDEOS QUE BOMBARAM ===== */
+  .bombando{background:var(--areia)}
+  .alternar{display:inline-flex;background:var(--papel);border:1px solid var(--linha);border-radius:999px;padding:4px;gap:2px;flex-wrap:wrap}
+  .alternar button{border:0;background:transparent;padding:9px 16px;border-radius:999px;cursor:pointer;font-weight:600;font-size:.86rem;color:var(--tinta-2);transition:background .25s,color .25s}
+  .alternar button[aria-pressed="true"]{background:var(--terra);color:var(--papel)}
+  .trilho{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(210px,1fr);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 18px;scrollbar-width:thin}
+  .reel{scroll-snap-align:start;border:0;padding:0;background:none;text-align:left;cursor:pointer;color:inherit}
+  .reel-capa{position:relative;aspect-ratio:9/16;border-radius:18px;overflow:hidden;background:linear-gradient(160deg,var(--terra-2),var(--terra-escura));box-shadow:var(--sombra)}
+  .reel-capa img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .reel:hover .reel-capa img{transform:scale(1.05)}
+  .reel-capa::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,transparent 30%,transparent 55%,rgba(0,0,0,.75) 100%)}
+  .reel-pos{position:absolute;top:12px;left:12px;z-index:1;background:var(--sol);color:var(--terra-escura);font:800 .9rem var(--titulo);padding:4px 10px;border-radius:999px}
+  .reel-play{position:absolute;inset:0;z-index:1;display:grid;place-items:center;opacity:0;transition:opacity .3s}
+  .reel:hover .reel-play,.reel:focus-visible .reel-play{opacity:1}
+  .reel-play span{width:58px;height:58px;border-radius:50%;background:rgba(255,252,246,.9);display:grid;place-items:center}
+  .reel-play svg{width:22px;height:22px;fill:var(--terra);margin-left:3px}
+  .reel-numeros{position:absolute;left:12px;right:12px;bottom:12px;z-index:1;color:#fff}
+  .reel-numeros strong{display:block;font:800 1.7rem/1.05 var(--titulo);letter-spacing:-.02em}
+  .reel-numeros small{font-size:.75rem;opacity:.85}
+  .reel-meta{display:flex;gap:12px;margin-top:10px;font-size:.82rem;color:var(--tinta-2)}
+  .reel-meta span{display:inline-flex;align-items:center;gap:4px}
+  .reel-legenda{font-size:.86rem;margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;color:var(--tinta)}
+  .nota{font-size:.8rem;color:var(--tinta-2);margin-top:8px}
+
+  /* ===== AUDIÊNCIA ===== */
+  .audiencia{background:var(--papel)}
+  .aud-grade{display:grid;grid-template-columns:1fr 1.3fr;gap:20px}
+  .aud-card{background:var(--areia);border-radius:20px;padding:28px}
+  .aud-card h3{font-size:1.15rem;margin-bottom:18px}
+  .genero{display:flex;height:64px;border-radius:14px;overflow:hidden}
+  .genero div{display:flex;align-items:center;padding:0 16px;color:#fff;font:800 1.2rem var(--titulo);width:0;transition:width 1.4s cubic-bezier(.2,.8,.2,1);white-space:nowrap}
+  .genero .m{background:var(--terra)}.genero .h{background:var(--ceu)}
+  .legenda-gen{display:flex;justify-content:space-between;margin-top:10px;font-size:.88rem;color:var(--tinta-2)}
+  .idades{display:flex;flex-direction:column;gap:12px}
+  .idade{display:grid;grid-template-columns:56px 1fr 52px;gap:12px;align-items:center;font-size:.9rem}
+  .barra{height:14px;background:rgba(43,26,16,.08);border-radius:999px;overflow:hidden}
+  .barra i{display:block;height:100%;width:0;border-radius:999px;background:var(--mato);transition:width 1.3s cubic-bezier(.2,.8,.2,1)}
+  .idade.topo-faixa .barra i{background:var(--sol)}
+  .idade b{text-align:right;font-family:var(--titulo)}
+  .aud-local{margin-top:18px;font-size:.88rem;color:var(--tinta-2)}
+  .aud-fonte{font-size:.76rem;color:var(--tinta-2);margin-top:14px;opacity:.8}
+  @media (max-width:860px){.aud-grade{grid-template-columns:1fr}}
+
+  /* ===== ALÉM DOS NÚMEROS ===== */
+  .alem{background:var(--ceu);color:var(--papel);overflow:hidden}
+  .alem h2{color:var(--papel)}
+  .alem .sobretitulo{color:rgba(255,252,246,.7)}
+  .alem-grade{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
+  .alem-texto p{color:rgba(255,252,246,.85);margin-top:18px;font-size:1.04rem}
+  .alem-texto .frase-curta{font-family:var(--titulo);font-weight:700;font-style:italic;font-size:1.4rem;color:var(--sol);line-height:1.3}
+  .comentarios{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 4px 20px;cursor:grab}
+  .comentarios img{flex:0 0 220px;width:220px;border-radius:18px;scroll-snap-align:center;box-shadow:0 20px 50px rgba(0,0,0,.35);transition:transform .35s}
+  .comentarios img:nth-child(odd){transform:rotate(-2deg)}
+  .comentarios img:nth-child(even){transform:rotate(2deg) translateY(14px)}
+  .comentarios img:hover{transform:rotate(0) scale(1.04)}
+  @media (max-width:860px){.alem-grade{grid-template-columns:1fr}}
+
+  /* ===== PARCERIAS ===== */
+  .parcerias{background:var(--areia)}
+  .parc-grade{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .parc{border:0;background:none;padding:0;text-align:left;cursor:pointer;color:inherit}
+  .celular{position:relative;border:7px solid var(--tinta);border-radius:30px;overflow:hidden;background:var(--tinta);box-shadow:var(--sombra);aspect-ratio:9/16}
+  .celular video,.celular img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:23px}
+  .parc .reel-play{opacity:1}
+  .parc.tem-previa:hover .reel-play{opacity:0}
+  .parc .reel-play span{transition:transform .3s}
+  .parc:hover .reel-play span{transform:scale(1.1)}
+  .parc .celular img{transition:transform .5s}
+  .parc:hover .celular img{transform:scale(1.04)}
+  .parc-info{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px}
+  .parc-info strong{font-family:var(--titulo);font-size:1.15rem}
+  .formato{font-size:.78rem;font-weight:600;background:var(--sol-claro);color:var(--terra);padding:5px 12px;border-radius:999px;white-space:nowrap}
+  @media (max-width:860px){.parc-grade{grid-template-columns:repeat(2,1fr);gap:14px}.celular{border-width:5px;border-radius:22px}.celular video,.celular img{border-radius:17px}}
+
+  /* ===== CONTATO ===== */
+  .contato{position:relative;color:var(--papel);background:var(--terra-escura);overflow:hidden}
+  .contato::before{content:"";position:absolute;inset:0;background:url(img/paisagem.jpg) center/cover;opacity:.32}
+  .contato .container{position:relative}
+  .contato h2{color:var(--papel);font-size:clamp(2.6rem,7vw,5.6rem)}
+  .contato h2 em{color:var(--sol)}
+  .contato-grade{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:end}
+  .contato p.lead{margin-top:18px;color:rgba(255,252,246,.85);max-width:480px;font-size:1.05rem}
+  .contato-lista{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+  .contato-lista a,.contato-lista span{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;background:rgba(255,252,246,.1);border:1px solid rgba(255,252,246,.18);text-decoration:none;backdrop-filter:blur(6px);transition:background .25s,transform .25s}
+  .contato-lista a:hover{background:rgba(255,252,246,.2);transform:translateX(4px)}
+  .contato-lista svg{width:22px;height:22px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .rodape{background:var(--terra-escura);color:rgba(255,252,246,.6);font-size:.82rem;padding:22px 0;border-top:1px solid rgba(255,252,246,.1)}
+  .rodape .container{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  @media (max-width:860px){.contato-grade{grid-template-columns:1fr}}
+
+  /* ===== MODAL (vídeo) ===== */
+  .modal{position:fixed;inset:0;z-index:100;background:rgba(27,13,6,.86);display:grid;place-items:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s}
+  .modal.aberto{opacity:1;pointer-events:auto}
+  .modal-caixa{position:relative;width:min(400px,100%);max-height:92vh;display:flex;flex-direction:column}
+  .modal-midia{border-radius:20px;overflow:hidden;background:#000;max-height:82vh}
+  .modal-midia video{width:100%;max-height:82vh}
+  .modal-midia iframe{width:100%;height:min(720px,80vh);border:0;background:#000}
+  .modal-info{display:flex;justify-content:space-between;gap:12px;color:var(--papel);font-size:.9rem;margin-top:12px}
+  .modal-info a{color:var(--sol)}
+  .fechar{position:absolute;top:-46px;right:0;width:38px;height:38px;border-radius:50%;border:0;background:var(--papel);color:var(--terra);font-size:1.4rem;cursor:pointer;line-height:1}
+
+  /* botão fixo de parceria no celular */
+  .flutuante{position:fixed;right:16px;bottom:16px;z-index:40;box-shadow:0 10px 30px rgba(0,0,0,.25);opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .3s,transform .3s}
+  .flutuante.mostrar{opacity:1;transform:none;pointer-events:auto}
+  @media (max-width:560px){
+    .container{padding:0 16px}
+    .secao{padding:72px 0}
+    .trilho{grid-auto-columns:72%}
+    .comentarios img{flex-basis:190px;width:190px}
+  }
+</style>
+</head>
+<body>
+
+<header class="topo" id="topo">
+  <div class="container topo-nav">
+    <a class="marca" href="#capa"><img src="img/logo.png" alt="" width="38" height="38">vai ter estrada</a>
+    <ul class="menu">
+      <li><a href="#sobre">Sobre nós</a></li>
+      <li><a href="#numeros">Números</a></li>
+      <li><a href="#bombando">Mais vistos</a></li>
+      <li><a href="#audiencia">Audiência</a></li>
+      <li><a href="#parcerias">Conteúdos</a></li>
+    </ul>
+    <a class="btn btn-sol" href="#contato">Vamos conversar</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ===================== CAPA ===================== -->
+<section class="capa" id="capa">
+  <div class="capa-fundo" aria-hidden="true"></div>
+  <div class="container capa-conteudo">
+    <div class="capa-grade">
+      <div>
+        <span class="ao-vivo"><i aria-hidden="true"></i><span id="ao-vivo-texto">Números ao vivo do Instagram</span></span>
+        <h1><span>vai ter</span><span><em>estrada</em></span></h1>
+        <p class="capa-sub"><b>Mídia kit · por Nath e João.</b> Camping, viagens, hospedagens e experiências ao ar livre, contadas do jeito que a gente vive.</p>
+        <div class="capa-botoes">
+          <a class="btn btn-sol" href="#contato">Quero uma parceria</a>
+          <a class="btn btn-claro" href="#bombando">Ver os vídeos que bombaram</a>
+        </div>
+      </div>
+      <div class="capa-selo" aria-hidden="true">
+        <svg class="selo-giro" viewBox="0 0 200 200"><defs><path id="circulo" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs><text><textPath href="#circulo">nossas aventuras · nossas histórias · nossa estrada · </textPath></text></svg>
+        <img src="img/logo.png" alt="" width="520" height="520">
+      </div>
+    </div>
+    <div class="capa-numeros">
+      <div><strong data-num="seguidores">–</strong><span>seguidores no Instagram</span></div>
+      <div><strong data-num="views30">–</strong><span>views nos últimos 30 dias</span></div>
+      <div><strong data-num="engajamento">–</strong><span>taxa de engajamento</span></div>
+      <div><strong data-num="maior">–</strong><span>views no vídeo mais visto</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SOBRE ===================== -->
+<section class="secao sobre" id="sobre">
+  <div class="container">
+    <div class="janela revelar">
+      <div class="janela-barra"><span class="pontos"><i></i><i></i><i></i></span><span class="url">vaiterestrada / sobre-nós</span></div>
+      <div class="janela-corpo sobre-grade">
+        <div class="filme">
+          <img src="img/casal-filme.jpg" width="1124" height="2000" alt="Nath e João sorrindo juntos, em fotos de filme" loading="lazy">
+          <span class="etiqueta">Nath &amp; João</span>
+        </div>
+        <div class="sobre-texto">
+          <span class="sobretitulo">Sobre nós</span>
+          <h2>Um casal, uma barraca e <em>muita estrada</em></h2>
+          <p id="sobre-1"></p>
+          <p id="sobre-2"></p>
+          <div class="temas" id="temas"></div>
+          <p class="frase" id="frase"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NÚMEROS ===================== -->
+<section class="secao numeros" id="numeros">
+  <div class="container">
+    <div class="cab revelar">
+      <div>
+        <span class="sobretitulo">Redes sociais</span>
+        <h2>Números que <em>crescem</em> com a estrada</h2>
+      </div>
+      <p>Atualizados sozinhos, direto do Instagram, várias vezes por dia. O que você vê aqui é o que está acontecendo agora no perfil.</p>
+    </div>
+    <div class="kpis revelar">
+      <div class="kpi destaque"><span class="kpi-rotulo">👥 Seguidores</span><div class="kpi-valor" data-num="seguidores">–</div><div class="kpi-sub" id="kpi-crescimento">no Instagram</div></div>
+      <div class="kpi"><span class="kpi-rotulo">▶️ Views em 30 dias</span><div class="kpi-valor" data-num="views30">–</div><div class="kpi-sub" id="kpi-posts30">em reels</div></div>
+      <div class="kpi"><span class="kpi-rotulo">📈 Média por reel</span><div class="kpi-valor" data-num="mediaViews">–</div><div class="kpi-sub">views por vídeo (30 dias)</div></div>
+      <div class="kpi"><span class="kpi-rotulo">💬 Engajamento</span><div class="kpi-valor" data-num="engajamento">–</div><div class="kpi-sub">curtidas + comentários ÷ seguidores</div></div>
+    </div>
+    <div class="numeros-baixo revelar">
+      <div class="painel">
+        <h3>Crescimento de seguidores</h3>
+        <p class="muted">Instagram @vaiterestrada</p>
+        <div class="grafico" id="grafico"></div>
+      </div>
+      <div class="painel">
+        <h3>Onde a gente está</h3>
+        <p class="muted">Toque pra ver o perfil</p>
+        <div class="redes-mini" style="margin-top:14px">
+          <a class="rede" id="rede-ig" href="https://www.instagram.com/vaiterestrada/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            <span><b id="ig-seg">–</b> seguidores<small id="ig-posts">Instagram · @vaiterestrada</small></span>
+          </a>
+          <a class="rede" id="rede-tt" href="https://www.tiktok.com/@vaiterestrada" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.4 5 4.6"/></svg>
+            <span><b id="tt-views">–</b> <span id="tt-rotulo">views</span><small id="tt-sub">TikTok · @vaiterestrada</small></span>
+          </a>
+        </div>
+        <p class="atualizado" id="alcance-linha" hidden></p>
+        <p class="atualizado" id="atualizado"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VÍDEOS QUE BOMBARAM ===================== -->
+<section class="secao bombando" id="bombando">
+  <div class="container">
+    <div class="cab revelar">
+      <div>
+        <span class="sobretitulo">Conteúdos</span>
+        <h2>Os vídeos que <em>bombaram</em></h2>
+      </div>
+      <div class="alternar" role="group" aria-label="Ordenar vídeos">
+        <button type="button" data-ordem="views" aria-pressed="true">Mais vistos</button>
+        <button type="button" data-ordem="interacoes" aria-pressed="false">Mais interação</button>
+        <button type="button" data-ordem="recentes" aria-pressed="false">Mais recentes</button>
+      </div>
+    </div>
+    <div class="trilho revelar" id="trilho" aria-live="polite"></div>
+    <p class="nota">Toque num vídeo pra assistir aqui mesmo. Quando um vídeo foi publicado em mais de uma versão, os números aparecem somados.</p>
+  </div>
+</section>
+
+<!-- ===================== AUDIÊNCIA ===================== -->
+<section class="secao audiencia" id="audiencia">
+  <div class="container">
+    <div class="cab revelar">
+      <div>
+        <span class="sobretitulo">Audiência</span>
+        <h2>Quem viaja <em>com a gente</em></h2>
+      </div>
+      <p>Um público adulto, que planeja, compra equipamento e viaja de verdade.</p>
+    </div>
+    <div class="aud-grade revelar" id="aud-grade">
+      <div class="aud-card">
+        <h3>Gênero</h3>
+        <div class="genero"><div class="m" id="gen-m"></div><div class="h" id="gen-h"></div></div>
+        <div class="legenda-gen"><span>🟤 Mulheres</span><span>🔵 Homens</span></div>
+        <p class="aud-local" id="aud-local"></p>
+      </div>
+      <div class="aud-card">
+        <h3>Faixa etária</h3>
+        <div class="idades" id="idades"></div>
+        <p class="aud-fonte" id="aud-fonte"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ALÉM DOS NÚMEROS ===================== -->
+<section class="secao alem" id="alem">
+  <div class="container alem-grade">
+    <div class="alem-texto revelar">
+      <span class="sobretitulo">Conexão</span>
+      <h2 style="margin-top:14px">Além dos <em>números</em></h2>
+      <p id="numeros-texto"></p>
+      <p class="frase-curta">Os números mostram o alcance. A conexão mostra o impacto.</p>
+    </div>
+    <div class="comentarios revelar" id="comentarios" aria-label="Comentários de seguidores"></div>
+  </div>
+</section>
+
+<!-- ===================== PARCERIAS ===================== -->
+<section class="secao parcerias" id="parcerias">
+  <div class="container">
+    <div class="cab revelar">
+      <div>
+        <span class="sobretitulo">Com marcas</span>
+        <h2>Formatos que a gente <em>já gravou</em></h2>
+      </div>
+      <p>Storytelling, review, demonstração e anúncio. Toque pra assistir com som.</p>
+    </div>
+    <div class="parc-grade revelar" id="parc-grade"></div>
+  </div>
+</section>
+
+<!-- ===================== CONTATO ===================== -->
+<section class="secao contato" id="contato">
+  <div class="container contato-grade">
+    <div class="revelar">
+      <span class="sobretitulo" style="color:rgba(255,252,246,.75)">Parcerias</span>
+      <h2 style="margin-top:14px">Vamos trabalhar <em>juntos?</em></h2>
+      <p class="lead">Conta pra gente o que a sua marca quer contar. A gente leva pra estrada e transforma em história.</p>
+    </div>
+    <ul class="contato-lista revelar" id="contato-lista"></ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <div class="container">
+    <span>© <span id="ano"></span> Vai Ter Estrada · Nath e João</span>
+    <span id="rodape-cidade">São Bernardo do Campo, SP</span>
+  </div>
+</footer>
+
+<a class="btn btn-sol flutuante" id="flutuante" href="#contato">💬 Parceria</a>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-caixa" role="dialog" aria-modal="true" aria-label="Vídeo">
+    <button class="fechar" id="modal-fechar" aria-label="Fechar">×</button>
+    <div class="modal-midia" id="modal-midia"></div>
+    <div class="modal-info"><span id="modal-titulo"></span><a id="modal-link" href="#" target="_blank" rel="noopener">Abrir no Instagram ↗</a></div>
+  </div>
+</div>
+
+<script src="reserva.js" defer></script>
+<script>
+/* =====================================================================
+   DADOS
+   - O texto, a audiência, o TikTok e as parcerias vêm do painel admin
+     (Supabase, tabela vte_dados, chave "conteudo").
+   - Os números do Instagram vêm do robô (vte_dados, chave "instagram"),
+     atualizados a cada 6 horas. O gráfico vem de vte_historico.
+   - Se o banco não responder, usa o conteúdo abaixo + o arquivo reserva.js.
+   ===================================================================== */
+const PAINEL = { url: 'https://faiobgzgwduwtitjhsoq.supabase.co', chave: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhaW9iZ3pnd2R1d3RpdGpoc29xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMyMDMyNTQsImV4cCI6MjEwODc3OTI1NH0.W78v4DBz8wM3_yQ-0JWabfAyRHmd5FKAcqy6qCHJNks' };
+
+const CONTEUDO_PADRAO = {
+  sobre: 'Somos Nath e João, um casal que encontrou na estrada uma forma de sair da rotina, viver novas experiências e colecionar histórias. Criamos conteúdo sobre viagens, camping, hospedagens e experiências ao ar livre, para quem ama viajar, acampar ou simplesmente descobrir novos lugares com a gente.',
+  sobre2: 'Nossa comunicação é leve, próxima e espontânea, misturando storytelling, informação e experiências reais para fazer quem acompanha não apenas conhecer um lugar, mas sentir vontade de viver aquilo também.',
+  frase: 'Porque não é só sobre o destino. É sobre o que acontece pelo caminho.',
+  temas: ['Camping', 'Viagens', 'Hospedagens', 'Ao ar livre', 'Cozinha de camping', 'Equipamentos'],
+  numeros_texto: 'A gente acredita que influência vai muito além de números. Visualizações, alcance e engajamento importam, e trabalhamos para que cada conteúdo gere resultado para as marcas que caminham com a gente. Mas, antes de tudo, vem a conexão: queremos que quem assiste se identifique e sinta que está vivendo a experiência junto com a gente.',
+  audiencia: {
+    fonte: 'Instagram Insights, outubro de 2026', mulheres: 55.8, homens: 44.2,
+    idades: [{ faixa: '13-17', pct: 0.6 }, { faixa: '18-24', pct: 3.3 }, { faixa: '25-34', pct: 19.6 }, { faixa: '35-44', pct: 30.0 }, { faixa: '45-54', pct: 32.2 }, { faixa: '55-64', pct: 11.8 }, { faixa: '65+', pct: 2.5 }],
+    local: 'Brasil, principalmente São Paulo'
+  },
+  tiktok: { usuario: 'vaiterestrada', views: '5 mil', curtidas: '232', periodo: 'views em 28 dias (set/2026)' },
+  parcerias: [
+    { marca: 'Camping Zé Roque', formato: 'Storytelling', video: 'https://youtube.com/shorts/72OwKxBbi48', capa: 'img/capas/zeroque.jpg' },
+    { marca: 'Bestway', formato: 'Review', video: 'https://youtube.com/shorts/0q-4tCV8TJY', capa: 'img/capas/bestway.jpg' },
+    { marca: 'Camping Morro Azul', formato: 'Storytelling', video: 'https://youtu.be/HnMlRyKu9DE', capa: 'img/capas/morroazul.jpg' },
+    { marca: 'HolyFoods', formato: 'Demonstração', video: 'https://youtube.com/shorts/IGV5whxSaKM', capa: 'img/capas/holyfoods.jpg' },
+    { marca: 'Stanley', formato: 'Anúncio', video: 'https://youtube.com/shorts/lKSGmIx6t-g', capa: 'img/capas/stanley.jpg' },
+    { marca: 'Dfense Pro', formato: 'Demonstração', video: 'https://youtube.com/shorts/Dd6Ul6OPgho', capa: 'img/capas/dfense.jpg' }
+  ],
+  comentarios: ['img/comentario-1.png', 'img/comentario-2.png', 'img/comentario-3.png', 'img/comentario-4.png', 'img/comentario-5.png'],
+  contato: { email: 'parceria.vaiterestrada@gmail.com', whatsapp: '5511980869201', cidade: 'São Bernardo do Campo, SP', instagram: 'vaiterestrada', tiktok: 'vaiterestrada' }
+};
+const HISTORICO_PADRAO = [{ dia: '2026-09-07', seguidores: 382 }, { dia: '2026-10-07', seguidores: 677 }];
+
+/* ---------- utilidades ---------- */
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const compacto = (n) => new Intl.NumberFormat('pt-BR', { notation: 'compact', maximumFractionDigits: 1 }).format(n || 0);
+const inteiro = (n) => Number(n || 0).toLocaleString('pt-BR');
+const pct = (n) => `${Number(n || 0).toLocaleString('pt-BR', { maximumFractionDigits: 1 })}%`;
+const DIA = 864e5;
+
+/* ---------- análise dos posts (mesma regra do painel) ----------
+   Reels publicados em mais de uma versão (mesma legenda) viram um só,
+   com views, curtidas e comentários somados. */
+function analisar(ig) {
+  const perfil = ig?.perfil || {};
+  const grupos = new Map();
+  for (const p of ig?.posts || []) {
+    // mesmo começo de legenda + mesmo dia = o mesmo vídeo (versão de teste)
+    const inicio = String(p.legenda || '').replace(/\s+/g, ' ').trim().toLowerCase().slice(0, 30);
+    const chave = inicio ? `${inicio}|${String(p.data).slice(0, 10)}` : p.id;
+    const g = grupos.get(chave);
+    if (!g) { grupos.set(chave, { ...p, versoes: 1, _max: p.views || 0 }); continue; }
+    g.versoes++;
+    if ((p.views || 0) > g._max) { g._max = p.views || 0; g.link = p.link; g.capa = p.capa || g.capa; }
+    g.views = (g.views || 0) + (p.views || 0);
+    g.curtidas = (g.curtidas || 0) + (p.curtidas || 0);
+    g.comentarios = (g.comentarios || 0) + (p.comentarios || 0);
+    if (p.data < g.data) g.data = p.data;
+  }
+  const lista = [...grupos.values()].map((p) => ({ ...p, interacoes: (p.curtidas || 0) + (p.comentarios || 0) }));
+  const seg = perfil.seguidores || 0;
+  const limite = Date.now() - 30 * DIA;
+  const recentes = lista.filter((p) => Date.parse(p.data) >= limite);
+  const videos30 = recentes.filter((p) => typeof p.views === 'number');
+  const views30 = videos30.reduce((t, p) => t + p.views, 0);
+  const eng = recentes.length && seg ? recentes.reduce((t, p) => t + p.interacoes / seg, 0) / recentes.length * 100 : 0;
+  const comViews = lista.filter((p) => typeof p.views === 'number');
+  return {
+    perfil, lista,
+    seguidores: seg,
+    views30,
+    posts30: recentes.length,
+    mediaViews: videos30.length ? Math.round(views30 / videos30.length) : 0,
+    engajamento: eng,
+    maior: comViews.reduce((m, p) => Math.max(m, p.views), 0),
+    viewsTotal: comViews.reduce((t, p) => t + p.views, 0),
+  };
+}
+
+/* ---------- contadores animados ---------- */
+function animarNumero(el, alvo, formato) {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = formato(alvo); return; }
+  const t0 = performance.now(), dur = 1400;
+  const passo = (t) => {
+    const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+    el.textContent = formato(alvo * e);
+    if (k < 1) requestAnimationFrame(passo);
+  };
+  requestAnimationFrame(passo);
+}
+function preencherNumeros(a) {
+  const formatos = {
+    seguidores: (v) => inteiro(Math.round(v)),
+    views30: (v) => compacto(Math.round(v)),
+    mediaViews: (v) => compacto(Math.round(v)),
+    engajamento: (v) => pct(v),
+    maior: (v) => compacto(Math.round(v)),
+  };
+  document.querySelectorAll('[data-num]').forEach((el) => {
+    const k = el.dataset.num;
+    const alvo = a[k] || 0;
+    el.dataset.alvo = alvo;
+    el._formato = formatos[k];
+    if (el._visto) animarNumero(el, alvo, formatos[k]); else el.textContent = formatos[k](0);
+  });
+}
+
+/* ---------- gráfico de crescimento ---------- */
+function desenharGrafico(hist, seguidoresHoje) {
+  const caixa = $('#grafico');
+  let pontos = (hist || []).filter((h) => h.seguidores).map((h) => ({ dia: h.dia, v: h.seguidores }));
+  const hoje = new Date(Date.now() - 3 * 3600e3).toISOString().slice(0, 10);
+  if (seguidoresHoje && !pontos.some((p) => p.dia === hoje)) pontos.push({ dia: hoje, v: seguidoresHoje });
+  pontos.sort((a, b) => a.dia.localeCompare(b.dia));
+  // no máximo ~10 pontos (um por semana quando tiver muitos dias)
+  if (pontos.length > 10) {
+    const passo = Math.ceil(pontos.length / 10);
+    pontos = pontos.filter((p, i) => i % passo === 0 || i === pontos.length - 1);
+  }
+  if (pontos.length < 2) { caixa.innerHTML = '<p class="muted">O gráfico aparece quando houver mais de um dia registrado.</p>'; return; }
+  const W = 560, H = 210, mx = 30, topo = 30, base = 180;
+  const t0 = Date.parse(pontos[0].dia), t1 = Date.parse(pontos[pontos.length - 1].dia);
+  const vmin = 0, vmax = Math.max(...pontos.map((p) => p.v)) * 1.12;
+  const x = (p) => mx + (Date.parse(p.dia) - t0) / Math.max(1, t1 - t0) * (W - mx * 2);
+  const y = (p) => base - (p.v - vmin) / (vmax - vmin) * (base - topo);
+  const d = pontos.map((p, i) => `${i ? 'L' : 'M'}${x(p).toFixed(1)},${y(p).toFixed(1)}`).join(' ');
+  const area = `${d} L${x(pontos[pontos.length - 1]).toFixed(1)},${base} L${x(pontos[0]).toFixed(1)},${base} Z`;
+  const rot = (s) => { const [, m, dd] = s.split('-'); return `${dd}/${m}`; };
+  const cresc = pontos[0].v ? Math.round((pontos[pontos.length - 1].v / pontos[0].v - 1) * 100) : 0;
+  caixa.innerHTML = `
+    <svg viewBox="0 0 ${W} ${H + 10}" role="img" aria-label="Seguidores foram de ${pontos[0].v} para ${pontos[pontos.length - 1].v}">
+      <defs><linearGradient id="grad-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9A23B" stop-opacity=".45"/><stop offset="1" stop-color="#E9A23B" stop-opacity="0"/></linearGradient></defs>
+      <line x1="${mx}" y1="${base}" x2="${W - mx}" y2="${base}" stroke="rgba(255,252,246,.2)"/>
+      <path class="area" d="${area}"/>
+      <path class="linha" d="${d}"/>
+      ${pontos.map((p, i) => `
+        <g><circle cx="${x(p).toFixed(1)}" cy="${y(p).toFixed(1)}" r="6"><title>${rot(p.dia)}: ${inteiro(p.v)} seguidores</title></circle>
+        ${i === 0 || i === pontos.length - 1 || pontos.length <= 5 ? `<text class="val" x="${x(p).toFixed(1)}" y="${(y(p) - 14).toFixed(1)}" text-anchor="middle">${inteiro(p.v)}</text>` : ''}
+        <text class="rot" x="${x(p).toFixed(1)}" y="${base + 20}" text-anchor="middle">${rot(p.dia)}</text></g>`).join('')}
+    </svg>`;
+  const linha = caixa.querySelector('.linha');
+  const comp = Math.ceil(linha.getTotalLength());
+  linha.style.setProperty('--comp', comp);
+  if (cresc > 0) $('#kpi-crescimento').textContent = `+${cresc}% desde ${rot(pontos[0].dia)}`;
+  observar(caixa);
+}
+
+/* ---------- vídeos que bombaram ---------- */
+let ANALISE = null;
+let ordem = 'views';
+const ICONE_PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+function desenharTrilho() {
+  if (!ANALISE) return;
+  const comparar = {
+    views: (a, b) => (b.views || 0) - (a.views || 0),
+    interacoes: (a, b) => b.interacoes - a.interacoes,
+    recentes: (a, b) => String(b.data).localeCompare(String(a.data)),
+  }[ordem];
+  const itens = ANALISE.lista.filter((p) => ordem !== 'views' || typeof p.views === 'number').sort(comparar).slice(0, 8);
+  const principal = (p) => ordem === 'interacoes'
+    ? `<strong>${compacto(p.interacoes)}</strong><small>interações</small>`
+    : typeof p.views === 'number' ? `<strong>${compacto(p.views)}</strong><small>views</small>` : `<strong>${compacto(p.interacoes)}</strong><small>interações</small>`;
+  const dataBr = (s) => new Date(s).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' }).replace('.', '');
+  $('#trilho').innerHTML = itens.map((p, i) => `
+    <button class="reel" type="button" data-link="${esc(p.link)}" data-titulo="${esc(String(p.legenda).slice(0, 60))}">
+      <div class="reel-capa">
+        ${p.capa ? `<img src="${esc(p.capa)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : ''}
+        <span class="reel-pos">#${i + 1}</span>
+        <span class="reel-play"><span>${ICONE_PLAY}</span></span>
+        <span class="reel-numeros">${principal(p)}</span>
+      </div>
+      <div class="reel-meta"><span>❤️ ${compacto(p.curtidas)}</span><span>💬 ${compacto(p.comentarios)}</span><span>${dataBr(p.data)}</span></div>
+      <p class="reel-legenda">${esc(p.legenda)}</p>
+    </button>`).join('');
+  $('#trilho').scrollLeft = 0;
+}
+
+/* ---------- conteúdo editável ---------- */
+function aplicarConteudo(c) {
+  $('#sobre-1').textContent = c.sobre || '';
+  $('#sobre-2').textContent = c.sobre2 || '';
+  $('#sobre-2').hidden = !c.sobre2;
+  $('#frase').textContent = c.frase || '';
+  $('#temas').innerHTML = (c.temas || []).map((t) => `<span>${esc(t)}</span>`).join('');
+  $('#numeros-texto').textContent = c.numeros_texto || '';
+
+  // audiência (se o robô já trouxe o público do Instagram, ele manda)
+  if (!PUBLICO_AUTO) aplicarAudiencia(c.audiencia || {});
+  aplicarTikTokEContato(c);
+}
+
+let PUBLICO_AUTO = false;
+function aplicarAudiencia(a) {
+  $('#gen-m').dataset.w = a.mulheres || 0; $('#gen-m').textContent = pct(a.mulheres);
+  $('#gen-h').dataset.w = a.homens || 0; $('#gen-h').textContent = pct(a.homens);
+  const idades = a.idades || [];
+  const maxIdade = Math.max(1, ...idades.map((i) => i.pct || 0));
+  $('#idades').innerHTML = idades.map((i) => `
+    <div class="idade ${i.pct === maxIdade ? 'topo-faixa' : ''}"><span>${esc(i.faixa)}</span><div class="barra"><i data-w="${(i.pct / maxIdade) * 100}"></i></div><b>${pct(i.pct)}</b></div>`).join('');
+  $('#aud-local').textContent = a.local ? `📍 ${a.local}` : '';
+  $('#aud-fonte').textContent = a.fonte ? `Fonte: ${a.fonte}` : '';
+  barrasVistas = false;
+  observar($('#aud-grade'));
+}
+
+function aplicarTikTokEContato(c) {
+  // TikTok
+  const tt = c.tiktok || {};
+  $('#tt-views').textContent = tt.views || tt.seguidores || '–';
+  $('#tt-rotulo').textContent = tt.views ? 'views' : 'seguidores';
+  $('#tt-sub').textContent = `TikTok · @${tt.usuario || 'vaiterestrada'}${tt.periodo ? ` · ${tt.periodo}` : ''}`;
+  $('#rede-tt').href = `https://www.tiktok.com/@${encodeURIComponent(tt.usuario || 'vaiterestrada')}`;
+
+  // comentários
+  $('#comentarios').innerHTML = (c.comentarios || []).map((src, i) => `<img src="${esc(src)}" alt="Print de comentário de seguidor ${i + 1}" loading="lazy" width="369" height="799">`).join('');
+
+  // parcerias
+  $('#parc-grade').innerHTML = (c.parcerias || []).map((p, i) => `
+    <button class="parc ${/\.(mp4|webm|mov)(\?|$)/i.test(p.video || '') ? 'tem-previa' : ''}" type="button" data-i="${i}" aria-label="Assistir ${esc(p.marca)} (${esc(p.formato || '')})">
+      <div class="celular">
+        ${p.capa ? `<img src="${esc(p.capa)}" alt="" loading="lazy">` : ''}
+        ${/\.(mp4|webm|mov)(\?|$)/i.test(p.video || '') ? `<video muted playsinline loop preload="none" ${p.capa ? `poster="${esc(p.capa)}"` : ''} src="${esc(p.video)}"></video>` : ''}
+        <span class="reel-play"><span>${ICONE_PLAY}</span></span>
+      </div>
+      <div class="parc-info"><strong>${esc(p.marca)}</strong><span class="formato">${esc(p.formato || '')}</span></div>
+    </button>`).join('');
+  PARCERIAS = c.parcerias || [];
+  ligarPrevias();
+
+  // contato
+  const k = c.contato || {};
+  const icones = {
+    email: '<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6 8.5 7 8.5-7"/></svg>',
+    whats: '<svg viewBox="0 0 24 24"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.5-4.3A8.5 8.5 0 1 1 20.5 11.6z"/></svg>',
+    ig: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg>',
+    tt: '<svg viewBox="0 0 24 24"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.4 5 4.6"/></svg>',
+    pin: '<svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
+  };
+  const whatsFmt = (n) => { const d = String(n).replace(/\D/g, '').replace(/^55/, ''); return d.length === 11 ? `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}` : d; };
+  $('#contato-lista').innerHTML = [
+    k.email && `<li><a href="mailto:${esc(k.email)}?subject=${encodeURIComponent('Parceria com o Vai Ter Estrada')}">${icones.email}${esc(k.email)}</a></li>`,
+    k.whatsapp && `<li><a href="https://wa.me/${esc(String(k.whatsapp).replace(/\D/g, ''))}?text=${encodeURIComponent('Oi, Nath e João! Vi o mídia kit do Vai Ter Estrada e quero falar sobre uma parceria.')}" target="_blank" rel="noopener">${icones.whats}${esc(whatsFmt(k.whatsapp))}</a></li>`,
+    k.instagram && `<li><a href="https://www.instagram.com/${esc(k.instagram)}/" target="_blank" rel="noopener">${icones.ig}@${esc(k.instagram)}</a></li>`,
+    k.tiktok && `<li><a href="https://www.tiktok.com/@${esc(k.tiktok)}" target="_blank" rel="noopener">${icones.tt}TikTok @${esc(k.tiktok)}</a></li>`,
+    k.cidade && `<li><span>${icones.pin}${esc(k.cidade)}</span></li>`,
+  ].filter(Boolean).join('');
+  if (k.cidade) $('#rodape-cidade').textContent = k.cidade;
+}
+
+/* ---------- números do Instagram ---------- */
+function aplicarInstagram(ig, hist) {
+  if (!ig?.perfil) return;
+  ANALISE = analisar(ig);
+  preencherNumeros(ANALISE);
+  $('#ig-seg').textContent = inteiro(ANALISE.seguidores);
+  $('#ig-posts').textContent = `Instagram · @${ANALISE.perfil.usuario || 'vaiterestrada'} · ${ANALISE.perfil.posts || ''} posts`;
+  $('#kpi-posts30').textContent = `${ANALISE.posts30} posts nos últimos 30 dias`;
+  if (ig.atualizado_em) {
+    const h = Math.max(0, Math.round((Date.now() - Date.parse(ig.atualizado_em)) / 36e5));
+    const quando = h < 1 ? 'há poucos minutos' : h < 24 ? `há ${h} ${h === 1 ? 'hora' : 'horas'}` : `em ${new Date(ig.atualizado_em).toLocaleDateString('pt-BR')}`;
+    $('#atualizado').textContent = `Atualizado ${quando}, direto do Instagram.`;
+    $('#ao-vivo-texto').textContent = `Números do Instagram · atualizado ${quando}`;
+  }
+  desenharTrilho();
+  desenharGrafico(hist, ANALISE.seguidores);
+
+  // métricas completas (quando o @vaiterestrada está ligado ao Meta)
+  const ins = ig.insights;
+  if (ins?.alcance_30d) {
+    $('#alcance-linha').hidden = false;
+    $('#alcance-linha').innerHTML = `👀 <b>${compacto(ins.alcance_30d)}</b> contas alcançadas nos últimos 30 dias${ins.visitas_perfil_30d ? ` · <b>${compacto(ins.visitas_perfil_30d)}</b> visitas ao perfil` : ''}`;
+  }
+  const p = ins?.publico;
+  if (p && (p.mulheres || p.idades?.length)) {
+    PUBLICO_AUTO = true;
+    const cidades = (p.cidades || []).slice(0, 3).map((x) => x.nome).filter(Boolean);
+    aplicarAudiencia({
+      mulheres: p.mulheres, homens: p.homens, idades: p.idades || [],
+      local: cidades.length ? `Principais cidades: ${cidades.join(', ')}` : '',
+      fonte: `Instagram, atualizado sozinho em ${new Date(ig.atualizado_em).toLocaleDateString('pt-BR')}`,
+    });
+  }
+}
+
+/* ---------- carregar ---------- */
+async function lerBanco() {
+  const h = { apikey: PAINEL.chave, Authorization: `Bearer ${PAINEL.chave}` };
+  const ctrl = new AbortController();
+  setTimeout(() => ctrl.abort(), 8000);
+  const [d, hi] = await Promise.all([
+    fetch(`${PAINEL.url}/rest/v1/vte_dados?select=chave,valor`, { headers: h, signal: ctrl.signal }).then((r) => r.ok ? r.json() : Promise.reject(r.status)),
+    fetch(`${PAINEL.url}/rest/v1/vte_historico?select=dia,seguidores&order=dia`, { headers: h, signal: ctrl.signal }).then((r) => r.ok ? r.json() : []).catch(() => []),
+  ]);
+  return { dados: Object.fromEntries(d.map((l) => [l.chave, l.valor])), hist: hi };
+}
+async function carregar() {
+  aplicarConteudo(CONTEUDO_PADRAO);
+  let banco = null;
+  try { banco = await lerBanco(); } catch (e) { console.warn('Banco indisponível, usando a reserva.', e); }
+  const conteudo = banco?.dados?.conteudo;
+  if (conteudo && typeof conteudo === 'object') aplicarConteudo({ ...CONTEUDO_PADRAO, ...conteudo });
+  const ig = banco?.dados?.instagram?.perfil ? banco.dados.instagram : window.VTE_RESERVA;
+  const hist = banco?.hist?.length ? banco.hist : HISTORICO_PADRAO;
+  aplicarInstagram(ig, hist);
+}
+
+/* ---------- interações ---------- */
+let PARCERIAS = [];
+let barrasVistas = false;
+const obs = 'IntersectionObserver' in window ? new IntersectionObserver((ents) => {
+  ents.forEach((e) => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    el.classList.add('visivel');
+    if (el.dataset.num !== undefined && !el._visto) { el._visto = true; animarNumero(el, Number(el.dataset.alvo || 0), el._formato || inteiro); }
+    if (el.id === 'aud-grade' && !barrasVistas) {
+      barrasVistas = true;
+      el.querySelectorAll('[data-w]').forEach((b) => { b.style.width = `${b.dataset.w}%`; });
+    }
+    obs.unobserve(el);
+  });
+}, { threshold: .18 }) : null;
+function observar(el) { if (!el) return; if (obs) obs.observe(el); else el.classList.add('visivel'); }
+
+function ligarPrevias() {
+  const podeHover = matchMedia('(hover: hover)').matches;
+  document.querySelectorAll('.parc').forEach((b) => {
+    const v = b.querySelector('video');
+    if (v && podeHover) {
+      b.addEventListener('mouseenter', () => { v.play().catch(() => {}); });
+      b.addEventListener('mouseleave', () => { v.pause(); });
+    }
+  });
+}
+
+function abrirModal(html, titulo, link, textoLink) {
+  $('#modal-midia').innerHTML = html;
+  $('#modal-titulo').textContent = titulo || '';
+  const a = $('#modal-link');
+  a.hidden = !link; if (link) { a.href = link; a.textContent = textoLink || 'Abrir no Instagram ↗'; }
+  $('#modal').classList.add('aberto');
+  $('#modal').setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  $('#modal-fechar').focus();
+}
+function fecharModal() {
+  $('#modal').classList.remove('aberto');
+  $('#modal').setAttribute('aria-hidden', 'true');
+  $('#modal-midia').innerHTML = '';
+  document.body.style.overflow = '';
+}
+const embedInstagram = (link) => { const m = String(link).match(/instagram\.com\/(?:[\w.]+\/)?(p|reel|tv)\/([\w-]+)/); return m ? `https://www.instagram.com/${m[1]}/${m[2]}/embed` : ''; };
+const idYoutube = (url) => (String(url || '').match(/(?:shorts\/|youtu\.be\/|[?&]v=|embed\/)([\w-]{11})/) || [])[1] || '';
+
+document.addEventListener('click', (e) => {
+  const r = e.target.closest('.reel');
+  if (r) {
+    const emb = embedInstagram(r.dataset.link);
+    if (!emb) { window.open(r.dataset.link, '_blank', 'noopener'); return; }
+    abrirModal(`<iframe src="${esc(emb)}" title="Vídeo do Instagram" loading="lazy" allowtransparency="true" allow="autoplay; encrypted-media"></iframe>`, r.dataset.titulo, r.dataset.link);
+    return;
+  }
+  const p = e.target.closest('.parc');
+  if (p) {
+    const item = PARCERIAS[Number(p.dataset.i)];
+    if (!item) return;
+    const v = item.video || '';
+    if (/\.(mp4|webm|mov)(\?|$)/i.test(v)) {
+      abrirModal(`<video src="${esc(v)}" ${item.capa ? `poster="${esc(item.capa)}"` : ''} controls autoplay playsinline></video>`, `${item.marca} · ${item.formato || ''}`, '', '');
+    } else if (idYoutube(v)) {
+      abrirModal(`<iframe src="https://www.youtube.com/embed/${idYoutube(v)}?autoplay=1&rel=0" title="${esc(item.marca)}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`, `${item.marca} · ${item.formato || ''}`, v, 'Abrir no YouTube ↗');
+    } else if (embedInstagram(v)) {
+      abrirModal(`<iframe src="${esc(embedInstagram(v))}" title="${esc(item.marca)}"></iframe>`, `${item.marca} · ${item.formato || ''}`, v);
+    } else if (v) window.open(v, '_blank', 'noopener');
+    return;
+  }
+  const o = e.target.closest('[data-ordem]');
+  if (o) {
+    ordem = o.dataset.ordem;
+    document.querySelectorAll('[data-ordem]').forEach((b) => b.setAttribute('aria-pressed', String(b === o)));
+    desenharTrilho();
+    return;
+  }
+  if (e.target.id === 'modal' || e.target.closest('#modal-fechar')) fecharModal();
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && $('#modal').classList.contains('aberto')) fecharModal(); });
+
+// arrastar os comentários com o mouse
+(() => {
+  const c = $('#comentarios'); let x0 = 0, s0 = 0, arrastando = false;
+  c.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') return; arrastando = true; x0 = e.clientX; s0 = c.scrollLeft; c.style.cursor = 'grabbing'; });
+  addEventListener('pointerup', () => { arrastando = false; c.style.cursor = ''; });
+  c.addEventListener('pointermove', (e) => { if (arrastando) { c.scrollLeft = s0 - (e.clientX - x0); e.preventDefault(); } });
+  c.addEventListener('dragstart', (e) => e.preventDefault());
+})();
+
+// topo e botão flutuante
+const aoRolar = () => {
+  $('#topo').classList.toggle('rolou', scrollY > 40);
+  const naCapa = scrollY < innerHeight * .7;
+  const noContato = $('#contato').getBoundingClientRect().top < innerHeight;
+  $('#flutuante').classList.toggle('mostrar', !naCapa && !noContato && innerWidth < 860);
+};
+addEventListener('scroll', aoRolar, { passive: true });
+aoRolar();
+
+$('#ano').textContent = new Date().getFullYear();
+document.querySelectorAll('.revelar, [data-num]').forEach(observar);
+window.addEventListener('DOMContentLoaded', carregar);
+</script>
+</body>
+</html>
