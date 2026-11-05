@@ -88,6 +88,14 @@
   .topo.rolou .menu a{color:var(--tinta)}
   .menu a:hover{text-decoration:underline;text-underline-offset:5px}
   .topo .btn{padding:10px 18px;font-size:.85rem}
+  .topo-acoes{display:flex;align-items:center;gap:10px}
+  /* botão PT / EN (igual ao do portfólio) */
+  .idioma{display:flex;border:1px solid rgba(255,252,246,.4);border-radius:999px;padding:3px;background:rgba(255,252,246,.12);backdrop-filter:blur(6px);transition:background .3s,border-color .3s}
+  .idioma button{border:0;background:transparent;font:700 .72rem var(--texto);letter-spacing:.06em;padding:6px 10px;border-radius:999px;cursor:pointer;color:var(--papel);transition:background .2s,color .2s}
+  .idioma button[aria-pressed="true"]{background:var(--sol);color:var(--terra-escura)}
+  .topo.rolou .idioma{background:var(--papel);border-color:var(--linha)}
+  .topo.rolou .idioma button{color:var(--tinta-2)}
+  .topo.rolou .idioma button[aria-pressed="true"]{color:var(--terra-escura)}
   @media (max-width:860px){.menu{display:none}}
 
   /* ===== CAPA ===== */
@@ -376,13 +384,19 @@
   <div class="container topo-nav">
     <a class="marca" href="#capa"><img src="img/logo.png" alt="" width="38" height="38">vai ter estrada</a>
     <ul class="menu">
-      <li><a href="#sobre">Sobre nós</a></li>
-      <li><a href="#numeros">Números</a></li>
-      <li><a href="#bombando">Mais vistos</a></li>
-      <li><a href="#audiencia">Audiência</a></li>
-      <li><a href="#parcerias">Conteúdos</a></li>
+      <li><a href="#sobre" data-en="About us">Sobre nós</a></li>
+      <li><a href="#numeros" data-en="Numbers">Números</a></li>
+      <li><a href="#bombando" data-en="Top videos">Mais vistos</a></li>
+      <li><a href="#audiencia" data-en="Audience">Audiência</a></li>
+      <li><a href="#parcerias" data-en="Content">Conteúdos</a></li>
     </ul>
-    <a class="btn btn-sol" href="#contato">Vamos conversar</a>
+    <div class="topo-acoes">
+      <div class="idioma" role="group" aria-label="Idioma / Language">
+        <button type="button" data-idioma="pt" aria-pressed="true" aria-label="Português">PT</button>
+        <button type="button" data-idioma="en" aria-pressed="false" aria-label="English">EN</button>
+      </div>
+      <a class="btn btn-sol" href="#contato" data-en="Let's talk">Vamos conversar</a>
+    </div>
   </div>
 </header>
 
@@ -396,25 +410,24 @@
   </div>
   <div class="container capa-conteudo">
     <div class="capa-titulo">
-      <span class="capa-kit">mídia kit</span>
+      <span class="capa-kit" data-en="by João &amp; Nath">por João e Nath</span>
       <h1>vai ter <em>estrada</em></h1>
-      <span class="capa-por">por Nath e João</span>
     </div>
     <div>
       <div class="capa-base">
         <div>
-          <p class="capa-sub">Camping, viagens, hospedagens e experiências ao ar livre, contadas do jeito que a gente vive.</p>
+          <p class="capa-sub" data-en="Camping, road trips, stays and outdoor experiences, told the way we live them.">Camping, viagens, hospedagens e experiências ao ar livre, contadas do jeito que a gente vive.</p>
           <div class="capa-botoes">
-            <a class="btn btn-sol" href="#contato">Quero uma parceria</a>
-            <a class="btn btn-claro" href="#bombando">Ver os vídeos que bombaram</a>
+            <a class="btn btn-sol" href="#contato" data-en="Let's partner up">Quero uma parceria</a>
+            <a class="btn btn-claro" href="#bombando" data-en="See our top videos">Ver os vídeos que bombaram</a>
           </div>
         </div>
       </div>
     <div class="capa-numeros">
-      <div><strong data-num="seguidores">–</strong><span>seguidores no Instagram</span></div>
-      <div><strong data-num="views30">–</strong><span>views nos últimos 30 dias</span></div>
-      <div><strong data-num="engajamento">–</strong><span>taxa de engajamento</span></div>
-      <div><strong data-num="maior">–</strong><span>views no vídeo mais visto</span></div>
+      <div><strong data-num="seguidores">–</strong><span data-en="Instagram followers">seguidores no Instagram</span></div>
+      <div><strong data-num="views30">–</strong><span data-en="views in the last 30 days">views nos últimos 30 dias</span></div>
+      <div><strong data-num="engajamento">–</strong><span data-en="engagement rate">taxa de engajamento</span></div>
+      <div><strong data-num="maior">–</strong><span data-en="views on our top video">views no vídeo mais visto</span></div>
     </div>
     </div>
   </div>
@@ -424,15 +437,15 @@
 <section class="secao sobre" id="sobre" style="padding:72px 0">
   <div class="container">
     <div class="janela revelar">
-      <div class="janela-barra"><span class="pontos"><i></i><i></i><i></i></span><span class="url">vaiterestrada / sobre-nós</span></div>
+      <div class="janela-barra"><span class="pontos"><i></i><i></i><i></i></span><span class="url" data-en="vaiterestrada / about-us">vaiterestrada / sobre-nós</span></div>
       <div class="janela-corpo sobre-grade">
         <div class="filme">
-          <img src="img/casal-filme.jpg" width="1124" height="2000" alt="Nath e João sorrindo juntos, em fotos de filme" loading="lazy">
+          <img src="img/casal-filme.jpg" width="1124" height="2000" alt="Nath e João sorrindo juntos, em fotos de filme" data-en-alt="Nath and João smiling together in film photos" loading="lazy">
           <span class="etiqueta">Nath &amp; João</span>
         </div>
         <div class="sobre-texto">
-          <span class="sobretitulo">Sobre nós</span>
-          <h2>Um casal, uma barraca e <em>muita estrada</em></h2>
+          <span class="sobretitulo" data-en="About us">Sobre nós</span>
+          <h2 data-en="A couple, a tent and <em>a lot of road</em>">Um casal, uma barraca e <em>muita estrada</em></h2>
           <p id="sobre-1"></p>
           <p id="sobre-2"></p>
           <div class="temas" id="temas"></div>
@@ -448,30 +461,30 @@
   <div class="container">
     <div class="cab revelar">
       <div>
-        <span class="sobretitulo">Redes sociais</span>
-        <h2>Números que <em>crescem</em> com a estrada</h2>
+        <span class="sobretitulo" data-en="Social media">Redes sociais</span>
+        <h2 data-en="Numbers that <em>grow</em> with the road">Números que <em>crescem</em> com a estrada</h2>
       </div>
-      <p>Atualizados sozinhos, direto do Instagram, várias vezes por dia.</p>
+      <p data-en="Updated automatically, straight from Instagram, several times a day.">Atualizados sozinhos, direto do Instagram, várias vezes por dia.</p>
     </div>
     <div class="kpis revelar">
-      <div class="kpi destaque"><span class="kpi-rotulo">👥 Seguidores</span><div class="kpi-valor" data-num="seguidores">–</div><div class="kpi-sub" id="kpi-crescimento">no Instagram</div></div>
-      <div class="kpi"><span class="kpi-rotulo">▶️ Views em 30 dias</span><div class="kpi-valor" data-num="views30">–</div><div class="kpi-sub" id="kpi-posts30">em reels</div></div>
-      <div class="kpi"><span class="kpi-rotulo">📈 Média por reel</span><div class="kpi-valor" data-num="mediaViews">–</div><div class="kpi-sub">views por vídeo (30 dias)</div></div>
-      <div class="kpi"><span class="kpi-rotulo">💬 Engajamento</span><div class="kpi-valor" data-num="engajamento">–</div><div class="kpi-sub">curtidas + comentários ÷ seguidores</div></div>
+      <div class="kpi destaque"><span class="kpi-rotulo" data-en="👥 Followers">👥 Seguidores</span><div class="kpi-valor" data-num="seguidores">–</div><div class="kpi-sub" id="kpi-crescimento">no Instagram</div></div>
+      <div class="kpi"><span class="kpi-rotulo" data-en="▶️ Views in 30 days">▶️ Views em 30 dias</span><div class="kpi-valor" data-num="views30">–</div><div class="kpi-sub" id="kpi-posts30" data-en="in reels">em reels</div></div>
+      <div class="kpi"><span class="kpi-rotulo" data-en="📈 Average per reel">📈 Média por reel</span><div class="kpi-valor" data-num="mediaViews">–</div><div class="kpi-sub" data-en="views per video (30 days)">views por vídeo (30 dias)</div></div>
+      <div class="kpi"><span class="kpi-rotulo" data-en="💬 Engagement">💬 Engajamento</span><div class="kpi-valor" data-num="engajamento">–</div><div class="kpi-sub" data-en="likes + comments ÷ followers">curtidas + comentários ÷ seguidores</div></div>
     </div>
     <div class="numeros-baixo revelar">
       <div class="painel">
-        <h3>Crescimento de seguidores</h3>
+        <h3 data-en="Follower growth">Crescimento de seguidores</h3>
         <p class="muted">Instagram @vaiterestrada</p>
         <div class="grafico" id="grafico"></div>
       </div>
       <div class="painel">
-        <h3>Onde a gente está</h3>
-        <p class="muted">Toque pra ver o perfil</p>
+        <h3 data-en="Where to find us">Onde a gente está</h3>
+        <p class="muted" data-en="Tap to see the profile">Toque pra ver o perfil</p>
         <div class="redes-mini" style="margin-top:14px">
           <a class="rede" id="rede-ig" href="https://www.instagram.com/vaiterestrada/" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-            <span><b id="ig-seg">–</b> seguidores<small id="ig-posts">Instagram · @vaiterestrada</small></span>
+            <span><b id="ig-seg">–</b> <span data-en="followers">seguidores</span><small id="ig-posts">Instagram · @vaiterestrada</small></span>
           </a>
           <a class="rede" id="rede-tt" href="https://www.tiktok.com/@vaiterestrada" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.4 5 4.6"/></svg>
@@ -490,17 +503,17 @@
   <div class="container">
     <div class="cab revelar">
       <div>
-        <span class="sobretitulo">Conteúdos</span>
-        <h2>Os vídeos que <em>bombaram</em></h2>
+        <span class="sobretitulo" data-en="Content">Conteúdos</span>
+        <h2 data-en="The videos that <em>took off</em>">Os vídeos que <em>bombaram</em></h2>
       </div>
-      <div class="alternar" role="group" aria-label="Ordenar vídeos">
-        <button type="button" data-ordem="views" aria-pressed="true">Mais vistos</button>
-        <button type="button" data-ordem="interacoes" aria-pressed="false">Mais interação</button>
-        <button type="button" data-ordem="recentes" aria-pressed="false">Mais recentes</button>
+      <div class="alternar" role="group" aria-label="Ordenar vídeos" data-en-aria-label="Sort videos">
+        <button type="button" data-ordem="views" aria-pressed="true" data-en="Most viewed">Mais vistos</button>
+        <button type="button" data-ordem="interacoes" aria-pressed="false" data-en="Most engagement">Mais interação</button>
+        <button type="button" data-ordem="recentes" aria-pressed="false" data-en="Most recent">Mais recentes</button>
       </div>
     </div>
     <div class="trilho revelar" id="trilho" aria-live="polite"></div>
-    <p class="nota">Toque num vídeo pra assistir aqui mesmo. Quando um vídeo foi publicado em mais de uma versão, os números aparecem somados.</p>
+    <p class="nota" data-en="Tap a video to watch it right here. When a video was posted in more than one version, the numbers are added together.">Toque num vídeo pra assistir aqui mesmo. Quando um vídeo foi publicado em mais de uma versão, os números aparecem somados.</p>
   </div>
 </section>
 
@@ -509,20 +522,20 @@
   <div class="container">
     <div class="cab revelar">
       <div>
-        <span class="sobretitulo">Audiência</span>
-        <h2>Quem viaja <em>com a gente</em></h2>
+        <span class="sobretitulo" data-en="Audience">Audiência</span>
+        <h2 data-en="Who travels <em>with us</em>">Quem viaja <em>com a gente</em></h2>
       </div>
-      <p>Um público adulto, que planeja, compra equipamento e viaja de verdade.</p>
+      <p data-en="An adult audience that plans, buys gear and really travels.">Um público adulto, que planeja, compra equipamento e viaja de verdade.</p>
     </div>
     <div class="aud-grade revelar" id="aud-grade">
       <div class="aud-card">
-        <h3>Gênero</h3>
+        <h3 data-en="Gender">Gênero</h3>
         <div class="genero"><div class="m" id="gen-m"></div><div class="h" id="gen-h"></div></div>
-        <div class="legenda-gen"><span>🟤 Mulheres</span><span>🔵 Homens</span></div>
+        <div class="legenda-gen"><span data-en="🟤 Women">🟤 Mulheres</span><span data-en="🔵 Men">🔵 Homens</span></div>
         <p class="aud-local" id="aud-local"></p>
       </div>
       <div class="aud-card">
-        <h3>Faixa etária</h3>
+        <h3 data-en="Age range">Faixa etária</h3>
         <div class="idades" id="idades"></div>
         <p class="aud-fonte" id="aud-fonte"></p>
       </div>
@@ -535,16 +548,16 @@
   <div class="container">
     <div class="alem-texto revelar">
       <div>
-        <span class="sobretitulo">Conexão</span>
-        <h2 style="margin-top:14px">Além dos <em>números</em></h2>
+        <span class="sobretitulo" data-en="Connection">Conexão</span>
+        <h2 style="margin-top:14px" data-en="Beyond <em>numbers</em>">Além dos <em>números</em></h2>
       </div>
       <div>
         <p id="numeros-texto"></p>
-        <p class="frase-curta">Os números mostram o alcance. A conexão mostra o impacto.</p>
+        <p class="frase-curta" data-en="Numbers show reach. Connection shows impact.">Os números mostram o alcance. A conexão mostra o impacto.</p>
       </div>
     </div>
   </div>
-  <div class="comentarios revelar" id="comentarios" aria-label="Comentários reais de quem acompanha o Vai Ter Estrada"></div>
+  <div class="comentarios revelar" id="comentarios" aria-label="Comentários reais de quem acompanha o Vai Ter Estrada" data-en-aria-label="Real comments from people who follow Vai Ter Estrada"></div>
 </section>
 
 <!-- ===================== PARCERIAS ===================== -->
@@ -552,12 +565,12 @@
   <div class="container">
     <div class="cab revelar">
       <div>
-        <span class="sobretitulo">Com marcas</span>
-        <h2>Formatos que a gente <em>já gravou</em></h2>
+        <span class="sobretitulo" data-en="With brands">Com marcas</span>
+        <h2 data-en="Formats we've <em>already filmed</em>">Formatos que a gente <em>já gravou</em></h2>
       </div>
-      <p>Storytelling, review, demonstração e anúncio. Toque pra assistir com som.</p>
+      <p data-en="Storytelling, review, demo and ad. Tap to watch with sound.">Storytelling, review, demonstração e anúncio. Toque pra assistir com som.</p>
     </div>
-    <div class="faixa-marcas" aria-label="Marcas que já gravaram com a gente"><div class="faixa-trilho" id="faixa-marcas"></div></div>
+    <div class="faixa-marcas" aria-label="Marcas que já gravaram com a gente" data-en-aria-label="Brands we have filmed with"><div class="faixa-trilho" id="faixa-marcas"></div></div>
     <div class="parc-grade revelar" id="parc-grade"></div>
   </div>
 </section>
@@ -566,9 +579,9 @@
 <section class="secao contato" id="contato">
   <div class="container contato-grade">
     <div class="revelar">
-      <span class="sobretitulo" style="color:rgba(255,252,246,.75)">Parcerias</span>
-      <h2 style="margin-top:14px">Vamos trabalhar <em>juntos?</em></h2>
-      <p class="lead">Conta pra gente o que a sua marca quer contar. A gente leva pra estrada e transforma em história.</p>
+      <span class="sobretitulo" style="color:rgba(255,252,246,.75)" data-en="Partnerships">Parcerias</span>
+      <h2 style="margin-top:14px" data-en="Shall we work <em>together?</em>">Vamos trabalhar <em>juntos?</em></h2>
+      <p class="lead" data-en="Tell us what your brand wants to say. We'll take it on the road and turn it into a story.">Conta pra gente o que a sua marca quer contar. A gente leva pra estrada e transforma em história.</p>
     </div>
     <ul class="contato-lista revelar" id="contato-lista"></ul>
   </div>
@@ -578,12 +591,12 @@
 
 <footer class="rodape">
   <div class="container">
-    <span>© <span id="ano"></span> Vai Ter Estrada · Nath e João</span>
+    <span>© <span id="ano"></span> Vai Ter Estrada · <span data-en="Nath &amp; João">Nath e João</span></span>
     <span id="rodape-cidade">São Bernardo do Campo, SP</span>
   </div>
 </footer>
 
-<button class="btn btn-sol flutuante" id="flutuante" type="button" aria-haspopup="dialog">💼 Valores e pacotes</button>
+<button class="btn btn-sol flutuante" id="flutuante" type="button" aria-haspopup="dialog" data-en="💼 Rates &amp; packages">💼 Valores e pacotes</button>
 
 <!-- ===================== POP-UP: VALORES E PACOTES =====================
      Os pedidos chegam no e-mail parceria.vaiterestrada@gmail.com (FormSubmit).
@@ -591,27 +604,27 @@
      botão "Activate Form": clique nele uma vez e pronto. -->
 <div class="captura" id="captura" aria-hidden="true">
   <div class="janela" role="dialog" aria-modal="true" aria-labelledby="titulo-captura">
-    <div class="janela-barra"><span class="pontos"><i></i><i></i><i></i></span><span class="url">vaiterestrada / valores-e-pacotes</span></div>
-    <button class="captura-fechar" id="fechar-captura" type="button" aria-label="Fechar">×</button>
+    <div class="janela-barra"><span class="pontos"><i></i><i></i><i></i></span><span class="url" data-en="vaiterestrada / rates-and-packages">vaiterestrada / valores-e-pacotes</span></div>
+    <button class="captura-fechar" id="fechar-captura" type="button" aria-label="Fechar" data-en-aria-label="Close">×</button>
     <div class="janela-corpo" id="captura-conteudo">
       <img class="captura-foto" src="img/capa-barraca.jpg" alt="" loading="lazy">
-      <span class="sobretitulo">Valores e pacotes</span>
-      <h2 id="titulo-captura">Quer receber nossa <em>proposta?</em></h2>
-      <p class="captura-texto">Deixe seu nome, a marca e o e-mail que a gente te manda os formatos, valores e ideias de conteúdo pra sua marca.</p>
+      <span class="sobretitulo" data-en="Rates &amp; packages">Valores e pacotes</span>
+      <h2 id="titulo-captura" data-en="Want our <em>proposal?</em>">Quer receber nossa <em>proposta?</em></h2>
+      <p class="captura-texto" data-en="Leave your name, brand and email and we'll send you our formats, rates and content ideas for your brand.">Deixe seu nome, a marca e o e-mail que a gente te manda os formatos, valores e ideias de conteúdo pra sua marca.</p>
       <form id="form-captura" novalidate>
-        <div class="campo"><label for="c-nome">Seu nome</label><input id="c-nome" type="text" autocomplete="name" required></div>
-        <div class="campo"><label for="c-marca">Nome da marca</label><input id="c-marca" type="text" autocomplete="organization" required></div>
-        <div class="campo"><label for="c-email">E-mail</label><input id="c-email" type="email" autocomplete="email" required></div>
+        <div class="campo"><label for="c-nome" data-en="Your name">Seu nome</label><input id="c-nome" type="text" autocomplete="name" required></div>
+        <div class="campo"><label for="c-marca" data-en="Brand name">Nome da marca</label><input id="c-marca" type="text" autocomplete="organization" required></div>
+        <div class="campo"><label for="c-email" data-en="Email">E-mail</label><input id="c-email" type="email" autocomplete="email" required></div>
         <input class="mel" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="btn btn-terra" type="submit">Quero receber</button>
+        <button class="btn btn-terra" type="submit" data-en="Send it to me">Quero receber</button>
       </form>
     </div>
   </div>
 </div>
 
 <div class="modal" id="modal" aria-hidden="true">
-  <div class="modal-caixa" role="dialog" aria-modal="true" aria-label="Vídeo">
-    <button class="fechar" id="modal-fechar" aria-label="Fechar">×</button>
+  <div class="modal-caixa" role="dialog" aria-modal="true" aria-label="Vídeo" data-en-aria-label="Video">
+    <button class="fechar" id="modal-fechar" aria-label="Fechar" data-en-aria-label="Close">×</button>
     <div class="modal-midia" id="modal-midia"></div>
     <div class="modal-info"><span id="modal-titulo"></span><a id="modal-link" href="#" target="_blank" rel="noopener">Abrir no Instagram ↗</a></div>
   </div>
@@ -669,9 +682,51 @@ const HISTORICO_PADRAO = [{ dia: '2026-09-07', seguidores: 382 }, { dia: '2026-1
 /* ---------- utilidades ---------- */
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const compacto = (n) => new Intl.NumberFormat('pt-BR', { notation: 'compact', maximumFractionDigits: 1 }).format(n || 0);
-const inteiro = (n) => Number(n || 0).toLocaleString('pt-BR');
-const pct = (n) => `${Number(n || 0).toLocaleString('pt-BR', { maximumFractionDigits: 1 })}%`;
+/* ---------- idioma (PT / EN) ----------
+   Ordem: o que a pessoa escolheu antes > ?lang=en no link > idioma do navegador.
+   Dica: pra mandar pra marca gringa, use o link com ?lang=en no final. */
+const IDIOMAS_OK = ['pt', 'en'];
+function idiomaInicial() {
+  try { const s = localStorage.getItem('vteIdioma'); if (IDIOMAS_OK.includes(s)) return s; } catch (e) {}
+  const p = new URLSearchParams(location.search).get('lang');
+  if (IDIOMAS_OK.includes(p)) return p;
+  return /^pt/i.test(navigator.language || 'pt') ? 'pt' : 'en';
+}
+let IDIOMA = idiomaInicial();
+const T = (pt, en) => (IDIOMA === 'en' ? en : pt);
+const LOCALE = () => (IDIOMA === 'en' ? 'en-US' : 'pt-BR');
+
+const compacto = (n) => new Intl.NumberFormat(LOCALE(), { notation: 'compact', maximumFractionDigits: 1 }).format(n || 0);
+const inteiro = (n) => Number(n || 0).toLocaleString(LOCALE());
+const pct = (n) => `${Number(n || 0).toLocaleString(LOCALE(), { maximumFractionDigits: 1 })}%`;
+
+// Textos em inglês do conteúdo que vem do painel (em português).
+// Se o painel tiver conteudo.en.{sobre, sobre2, frase, numeros_texto, temas}, usa esses.
+const CONTEUDO_EN = {
+  sobre: "We're Nath and João, a couple who found on the road a way out of the routine, to live new experiences and collect stories. We create content about travel, camping, stays and outdoor experiences, for people who love to travel, camp or simply discover new places with us.",
+  sobre2: 'Our tone is light, close and spontaneous, mixing storytelling, information and real experiences so our audience doesn’t just get to know a place, but feels like living it too.',
+  frase: 'Because it’s not just about the destination. It’s about what happens along the way.',
+  temas: ['Camping', 'Travel', 'Stays', 'Outdoors', 'Camp cooking', 'Gear'],
+  numeros_texto: 'Views, reach and engagement matter, and every piece of content is designed to drive results for the brand. But connection comes first: people who watch relate to us and feel like they’re living the experience with us.',
+};
+const FORMATOS_EN = { 'Demonstração': 'Demo', 'Anúncio': 'Ad', 'Receita': 'Recipe', 'Hospedagem': 'Stay', 'Roteiro de viagem': 'Travel guide' };
+const TAGS_EN = {
+  '🛒 Quer comprar': '🛒 Wants to buy', '⛺ Deu vontade de acampar': '⛺ Wants to go camping', '📍 Quer conhecer o lugar': '📍 Wants to visit',
+  '👏 Elogio': '👏 Compliment', '💡 Gostou da dica': '💡 Loved the tip', '💡 Vai usar a dica': '💡 Will use the tip', '💬 Se identificou': '💬 Relates to it',
+};
+const formatoT = (f) => (IDIOMA === 'en' ? FORMATOS_EN[f] || f : f);
+const tagT = (t) => (IDIOMA === 'en' ? TAGS_EN[t] || t : t);
+function conteudoNoIdioma(c) {
+  if (IDIOMA !== 'en') return c;
+  const en = { ...CONTEUDO_EN, ...(c.en || {}) };
+  const a = c.audiencia || {};
+  const tt = c.tiktok || {};
+  return {
+    ...c, sobre: en.sobre, sobre2: en.sobre2, frase: en.frase, temas: en.temas, numeros_texto: en.numeros_texto,
+    audiencia: { ...a, local: a.local ? (en.local || 'Brazil, mostly São Paulo') : '', fonte: a.fonte ? (en.fonte || 'Instagram Insights') : '' },
+    tiktok: { ...tt, periodo: tt.periodo ? (en.tiktok_periodo || 'views in 28 days') : '', views: String(tt.views || '').replace(/\s*mil$/i, 'K') },
+  };
+}
 const DIA = 864e5;
 
 /* ---------- análise dos posts (mesma regra do painel) ----------
@@ -753,7 +808,7 @@ function desenharGrafico(hist, seguidoresHoje) {
     const passo = Math.ceil(pontos.length / 10);
     pontos = pontos.filter((p, i) => i % passo === 0 || i === pontos.length - 1);
   }
-  if (pontos.length < 2) { caixa.innerHTML = '<p class="muted">O gráfico aparece quando houver mais de um dia registrado.</p>'; return; }
+  if (pontos.length < 2) { caixa.innerHTML = `<p class="muted">${T('O gráfico aparece quando houver mais de um dia registrado.', 'The chart shows up once there is more than one day recorded.')}</p>`; return; }
   const W = 560, H = 210, mx = 30, topo = 30, base = 180;
   const t0 = Date.parse(pontos[0].dia), t1 = Date.parse(pontos[pontos.length - 1].dia);
   const vmin = 0, vmax = Math.max(...pontos.map((p) => p.v)) * 1.12;
@@ -761,23 +816,23 @@ function desenharGrafico(hist, seguidoresHoje) {
   const y = (p) => base - (p.v - vmin) / (vmax - vmin) * (base - topo);
   const d = pontos.map((p, i) => `${i ? 'L' : 'M'}${x(p).toFixed(1)},${y(p).toFixed(1)}`).join(' ');
   const area = `${d} L${x(pontos[pontos.length - 1]).toFixed(1)},${base} L${x(pontos[0]).toFixed(1)},${base} Z`;
-  const rot = (s) => { const [, m, dd] = s.split('-'); return `${dd}/${m}`; };
+  const rot = (s) => { const [, m, dd] = s.split('-'); return IDIOMA === 'en' ? `${m}/${dd}` : `${dd}/${m}`; };
   const cresc = pontos[0].v ? Math.round((pontos[pontos.length - 1].v / pontos[0].v - 1) * 100) : 0;
   caixa.innerHTML = `
-    <svg viewBox="0 0 ${W} ${H + 10}" role="img" aria-label="Seguidores foram de ${pontos[0].v} para ${pontos[pontos.length - 1].v}">
+    <svg viewBox="0 0 ${W} ${H + 10}" role="img" aria-label="${T(`Seguidores foram de ${pontos[0].v} para ${pontos[pontos.length - 1].v}`, `Followers went from ${pontos[0].v} to ${pontos[pontos.length - 1].v}`)}">
       <defs><linearGradient id="grad-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9A23B" stop-opacity=".45"/><stop offset="1" stop-color="#E9A23B" stop-opacity="0"/></linearGradient></defs>
       <line x1="${mx}" y1="${base}" x2="${W - mx}" y2="${base}" stroke="rgba(255,252,246,.2)"/>
       <path class="area" d="${area}"/>
       <path class="linha" d="${d}"/>
       ${pontos.map((p, i) => `
-        <g><circle cx="${x(p).toFixed(1)}" cy="${y(p).toFixed(1)}" r="6"><title>${rot(p.dia)}: ${inteiro(p.v)} seguidores</title></circle>
+        <g><circle cx="${x(p).toFixed(1)}" cy="${y(p).toFixed(1)}" r="6"><title>${rot(p.dia)}: ${inteiro(p.v)} ${T('seguidores', 'followers')}</title></circle>
         ${i === 0 || i === pontos.length - 1 || pontos.length <= 5 ? `<text class="val" x="${x(p).toFixed(1)}" y="${(y(p) - 14).toFixed(1)}" text-anchor="middle">${inteiro(p.v)}</text>` : ''}
         <text class="rot" x="${x(p).toFixed(1)}" y="${base + 20}" text-anchor="middle">${rot(p.dia)}</text></g>`).join('')}
     </svg>`;
   const linha = caixa.querySelector('.linha');
   const comp = Math.ceil(linha.getTotalLength());
   linha.style.setProperty('--comp', comp);
-  if (cresc > 0) $('#kpi-crescimento').textContent = `+${cresc}% desde ${rot(pontos[0].dia)}`;
+  $('#kpi-crescimento').textContent = cresc > 0 ? T(`+${cresc}% desde ${rot(pontos[0].dia)}`, `+${cresc}% since ${rot(pontos[0].dia)}`) : T('no Instagram', 'on Instagram');
   observar(caixa);
 }
 
@@ -794,9 +849,9 @@ function desenharTrilho() {
   }[ordem];
   const itens = ANALISE.lista.filter((p) => ordem !== 'views' || typeof p.views === 'number').sort(comparar).slice(0, 8);
   const principal = (p) => ordem === 'interacoes'
-    ? `<strong>${compacto(p.interacoes)}</strong><small>interações</small>`
-    : typeof p.views === 'number' ? `<strong>${compacto(p.views)}</strong><small>views</small>` : `<strong>${compacto(p.interacoes)}</strong><small>interações</small>`;
-  const dataBr = (s) => new Date(s).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' }).replace('.', '');
+    ? `<strong>${compacto(p.interacoes)}</strong><small>${T('interações', 'engagements')}</small>`
+    : typeof p.views === 'number' ? `<strong>${compacto(p.views)}</strong><small>views</small>` : `<strong>${compacto(p.interacoes)}</strong><small>${T('interações', 'engagements')}</small>`;
+  const dataBr = (s) => new Date(s).toLocaleDateString(LOCALE(), { day: '2-digit', month: 'short' }).replace('.', '');
   $('#trilho').innerHTML = itens.map((p, i) => `
     <button class="reel" type="button" data-link="${esc(p.link)}" data-titulo="${esc(String(p.legenda).slice(0, 60))}">
       <div class="reel-capa">
@@ -812,7 +867,10 @@ function desenharTrilho() {
 }
 
 /* ---------- conteúdo editável ---------- */
-function aplicarConteudo(c) {
+let ULTIMO_CONTEUDO = null;
+function aplicarConteudo(original) {
+  ULTIMO_CONTEUDO = original;
+  const c = conteudoNoIdioma(original);
   $('#sobre-1').textContent = c.sobre || '';
   $('#sobre-2').textContent = c.sobre2 || '';
   $('#sobre-2').hidden = !c.sobre2;
@@ -834,7 +892,7 @@ function aplicarAudiencia(a) {
   $('#idades').innerHTML = idades.map((i) => `
     <div class="idade ${i.pct === maxIdade ? 'topo-faixa' : ''}"><span>${esc(i.faixa)}</span><div class="barra"><i data-w="${(i.pct / maxIdade) * 100}"></i></div><b>${pct(i.pct)}</b></div>`).join('');
   $('#aud-local').textContent = a.local ? `📍 ${a.local}` : '';
-  $('#aud-fonte').textContent = a.fonte ? `Fonte: ${a.fonte}` : '';
+  $('#aud-fonte').textContent = a.fonte ? `${T('Fonte', 'Source')}: ${a.fonte}` : '';
   barrasVistas = false;
   observar($('#aud-grade'));
 }
@@ -843,18 +901,18 @@ function aplicarTikTokEContato(c) {
   // TikTok
   const tt = c.tiktok || {};
   $('#tt-views').textContent = tt.views || tt.seguidores || '–';
-  $('#tt-rotulo').textContent = tt.views ? 'views' : 'seguidores';
+  $('#tt-rotulo').textContent = tt.views ? 'views' : T('seguidores', 'followers');
   $('#tt-sub').textContent = `TikTok · @${tt.usuario || 'vaiterestrada'}${tt.periodo ? ` · ${tt.periodo}` : ''}`;
   $('#rede-tt').href = `https://www.tiktok.com/@${encodeURIComponent(tt.usuario || 'vaiterestrada')}`;
 
   // comentários: cartão (texto) ou print (imagem enviada pelo painel)
   const cartao = (k) => typeof k === 'string'
-    ? `<img class="coment-img" src="${esc(k)}" alt="Print de comentário de seguidor" loading="lazy">`
+    ? `<img class="coment-img" src="${esc(k)}" alt="${T('Print de comentário de seguidor', 'Screenshot of a follower comment')}" loading="lazy">`
     : `<article class="coment">
         <div class="coment-topo"><span class="coment-avatar" aria-hidden="true">${esc(String(k.usuario || '?').replace(/^@/, '').charAt(0))}</span>
-          <span class="coment-user">@${esc(String(k.usuario || '').replace(/^@/, ''))}<small>comentou no Instagram</small></span></div>
+          <span class="coment-user">@${esc(String(k.usuario || '').replace(/^@/, ''))}<small>${T('comentou no Instagram', 'commented on Instagram (in Portuguese)')}</small></span></div>
         <p class="coment-texto">${esc(k.texto)}</p>
-        ${k.tag ? `<span class="coment-tag">${esc(k.tag)}</span>` : ''}
+        ${k.tag ? `<span class="coment-tag">${esc(tagT(k.tag))}</span>` : ''}
       </article>`;
   const todos = (c.comentarios || []).filter(Boolean);
   const filas = [todos.filter((_, i) => i % 2 === 0), todos.filter((_, i) => i % 2 === 1)].filter((f) => f.length);
@@ -864,8 +922,8 @@ function aplicarTikTokEContato(c) {
 
   // parcerias
   $('#parc-grade').innerHTML = (c.parcerias || []).map((p, i) => `
-    <button class="parc ${/\.(mp4|webm|mov)(\?|$)/i.test(p.video || '') ? 'tem-previa' : ''}" type="button" data-i="${i}" aria-label="Assistir ${esc(p.marca)} (${esc(p.formato || '')})">
-      <div class="parc-topo"><strong>${esc(p.marca)}</strong><span class="formato">${esc(p.formato || '')}</span></div>
+    <button class="parc ${/\.(mp4|webm|mov)(\?|$)/i.test(p.video || '') ? 'tem-previa' : ''}" type="button" data-i="${i}" aria-label="${T('Assistir', 'Watch')} ${esc(p.marca)} (${esc(formatoT(p.formato || ''))})">
+      <div class="parc-topo"><strong>${esc(p.marca)}</strong><span class="formato">${esc(formatoT(p.formato || ''))}</span></div>
       <div class="celular">
         ${p.capa ? `<img src="${esc(p.capa)}" alt="" loading="lazy">` : ''}
         ${/\.(mp4|webm|mov)(\?|$)/i.test(p.video || '') ? `<video muted playsinline loop preload="none" ${p.capa ? `poster="${esc(p.capa)}"` : ''} src="${esc(p.video)}"></video>` : ''}
@@ -895,8 +953,8 @@ function aplicarTikTokEContato(c) {
   };
   const whatsFmt = (n) => { const d = String(n).replace(/\D/g, '').replace(/^55/, ''); return d.length === 11 ? `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}` : d; };
   $('#contato-lista').innerHTML = [
-    k.email && `<li><a href="mailto:${esc(k.email)}?subject=${encodeURIComponent('Parceria com o Vai Ter Estrada')}">${icones.email}${esc(k.email)}</a></li>`,
-    k.whatsapp && `<li><a href="https://wa.me/${esc(String(k.whatsapp).replace(/\D/g, ''))}?text=${encodeURIComponent('Oi, Nath e João! Vi o mídia kit do Vai Ter Estrada e quero falar sobre uma parceria.')}" target="_blank" rel="noopener">${icones.whats}${esc(whatsFmt(k.whatsapp))}</a></li>`,
+    k.email && `<li><a href="mailto:${esc(k.email)}?subject=${encodeURIComponent(T('Parceria com o Vai Ter Estrada', 'Partnership with Vai Ter Estrada'))}">${icones.email}${esc(k.email)}</a></li>`,
+    k.whatsapp && `<li><a href="https://wa.me/${esc(String(k.whatsapp).replace(/\D/g, ''))}?text=${encodeURIComponent(T('Oi, Nath e João! Vi o mídia kit do Vai Ter Estrada e quero falar sobre uma parceria.', "Hi Nath and João! I saw the Vai Ter Estrada media kit and I'd like to talk about a partnership."))}" target="_blank" rel="noopener">${icones.whats}${esc(whatsFmt(k.whatsapp))}</a></li>`,
     k.instagram && `<li><a href="https://www.instagram.com/${esc(k.instagram)}/" target="_blank" rel="noopener">${icones.ig}@${esc(k.instagram)}</a></li>`,
     k.tiktok && `<li><a href="https://www.tiktok.com/@${esc(k.tiktok)}" target="_blank" rel="noopener">${icones.tt}TikTok @${esc(k.tiktok)}</a></li>`,
     k.cidade && `<li><span>${icones.pin}${esc(k.cidade)}</span></li>`,
@@ -905,17 +963,22 @@ function aplicarTikTokEContato(c) {
 }
 
 /* ---------- números do Instagram ---------- */
+let ULTIMO_IG = null, ULTIMO_HIST = null;
 function aplicarInstagram(ig, hist) {
   if (!ig?.perfil) return;
+  ULTIMO_IG = ig; ULTIMO_HIST = hist;
   ANALISE = analisar(ig);
   preencherNumeros(ANALISE);
   $('#ig-seg').textContent = inteiro(ANALISE.seguidores);
   $('#ig-posts').textContent = `Instagram · @${ANALISE.perfil.usuario || 'vaiterestrada'} · ${ANALISE.perfil.posts || ''} posts`;
-  $('#kpi-posts30').textContent = `${ANALISE.posts30} posts nos últimos 30 dias`;
+  $('#kpi-posts30').textContent = T(`${ANALISE.posts30} posts nos últimos 30 dias`, `${ANALISE.posts30} posts in the last 30 days`);
   if (ig.atualizado_em) {
     const h = Math.max(0, Math.round((Date.now() - Date.parse(ig.atualizado_em)) / 36e5));
-    const quando = h < 1 ? 'há poucos minutos' : h < 24 ? `há ${h} ${h === 1 ? 'hora' : 'horas'}` : `em ${new Date(ig.atualizado_em).toLocaleDateString('pt-BR')}`;
-    $('#atualizado').textContent = `Atualizado ${quando}, direto do Instagram.`;
+    const dia = new Date(ig.atualizado_em).toLocaleDateString(LOCALE());
+    const quando = h < 1 ? T('há poucos minutos', 'a few minutes ago')
+      : h < 24 ? T(`há ${h} ${h === 1 ? 'hora' : 'horas'}`, `${h} ${h === 1 ? 'hour' : 'hours'} ago`)
+      : T(`em ${dia}`, `on ${dia}`);
+    $('#atualizado').textContent = T(`Atualizado ${quando}, direto do Instagram.`, `Updated ${quando}, straight from Instagram.`);
   }
   desenharTrilho();
   desenharGrafico(hist, ANALISE.seguidores);
@@ -924,7 +987,7 @@ function aplicarInstagram(ig, hist) {
   const ins = ig.insights;
   if (ins?.alcance_30d) {
     $('#alcance-linha').hidden = false;
-    $('#alcance-linha').innerHTML = `👀 <b>${compacto(ins.alcance_30d)}</b> contas alcançadas nos últimos 30 dias${ins.visitas_perfil_30d ? ` · <b>${compacto(ins.visitas_perfil_30d)}</b> visitas ao perfil` : ''}`;
+    $('#alcance-linha').innerHTML = `👀 <b>${compacto(ins.alcance_30d)}</b> ${T('contas alcançadas nos últimos 30 dias', 'accounts reached in the last 30 days')}${ins.visitas_perfil_30d ? ` · <b>${compacto(ins.visitas_perfil_30d)}</b> ${T('visitas ao perfil', 'profile visits')}` : ''}`;
   }
   const p = ins?.publico;
   if (p && (p.mulheres || p.idades?.length)) {
@@ -932,8 +995,8 @@ function aplicarInstagram(ig, hist) {
     const cidades = (p.cidades || []).slice(0, 3).map((x) => x.nome).filter(Boolean);
     aplicarAudiencia({
       mulheres: p.mulheres, homens: p.homens, idades: p.idades || [],
-      local: cidades.length ? `Principais cidades: ${cidades.join(', ')}` : '',
-      fonte: `Instagram, atualizado sozinho em ${new Date(ig.atualizado_em).toLocaleDateString('pt-BR')}`,
+      local: cidades.length ? `${T('Principais cidades', 'Top cities')}: ${cidades.join(', ')}` : '',
+      fonte: T(`Instagram, atualizado sozinho em ${new Date(ig.atualizado_em).toLocaleDateString('pt-BR')}`, `Instagram, updated automatically on ${new Date(ig.atualizado_em).toLocaleDateString('en-US')}`),
     });
   }
 }
@@ -993,7 +1056,7 @@ function abrirModal(html, titulo, link, textoLink) {
   $('#modal-midia').innerHTML = html;
   $('#modal-titulo').textContent = titulo || '';
   const a = $('#modal-link');
-  a.hidden = !link; if (link) { a.href = link; a.textContent = textoLink || 'Abrir no Instagram ↗'; }
+  a.hidden = !link; if (link) { a.href = link; a.textContent = textoLink || T('Abrir no Instagram ↗', 'Open on Instagram ↗'); }
   $('#modal').classList.add('aberto');
   $('#modal').setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
@@ -1013,7 +1076,7 @@ document.addEventListener('click', (e) => {
   if (r) {
     const emb = embedInstagram(r.dataset.link);
     if (!emb) { window.open(r.dataset.link, '_blank', 'noopener'); return; }
-    abrirModal(`<iframe src="${esc(emb)}" title="Vídeo do Instagram" loading="lazy" allowtransparency="true" allow="autoplay; encrypted-media"></iframe>`, r.dataset.titulo, r.dataset.link);
+    abrirModal(`<iframe src="${esc(emb)}" title="${T('Vídeo do Instagram', 'Instagram video')}" loading="lazy" allowtransparency="true" allow="autoplay; encrypted-media"></iframe>`, r.dataset.titulo, r.dataset.link);
     return;
   }
   const p = e.target.closest('.parc');
@@ -1022,11 +1085,11 @@ document.addEventListener('click', (e) => {
     if (!item) return;
     const v = item.video || '';
     if (/\.(mp4|webm|mov)(\?|$)/i.test(v)) {
-      abrirModal(`<video src="${esc(v)}" ${item.capa ? `poster="${esc(item.capa)}"` : ''} controls autoplay playsinline></video>`, `${item.marca} · ${item.formato || ''}`, '', '');
+      abrirModal(`<video src="${esc(v)}" ${item.capa ? `poster="${esc(item.capa)}"` : ''} controls autoplay playsinline></video>`, `${item.marca} · ${formatoT(item.formato || '')}`, '', '');
     } else if (idYoutube(v)) {
-      abrirModal(`<iframe src="https://www.youtube.com/embed/${idYoutube(v)}?autoplay=1&rel=0" title="${esc(item.marca)}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`, `${item.marca} · ${item.formato || ''}`, v, 'Abrir no YouTube ↗');
+      abrirModal(`<iframe src="https://www.youtube.com/embed/${idYoutube(v)}?autoplay=1&rel=0" title="${esc(item.marca)}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`, `${item.marca} · ${formatoT(item.formato || '')}`, v, T('Abrir no YouTube ↗', 'Open on YouTube ↗'));
     } else if (embedInstagram(v)) {
-      abrirModal(`<iframe src="${esc(embedInstagram(v))}" title="${esc(item.marca)}"></iframe>`, `${item.marca} · ${item.formato || ''}`, v);
+      abrirModal(`<iframe src="${esc(embedInstagram(v))}" title="${esc(item.marca)}"></iframe>`, `${item.marca} · ${formatoT(item.formato || '')}`, v);
     } else if (v) window.open(v, '_blank', 'noopener');
     return;
   }
@@ -1087,7 +1150,7 @@ $('#form-captura').addEventListener('submit', async (e) => {
   if (f._honey && f._honey.value) return; // robô
   const botao = f.querySelector('button[type=submit]');
   const texto = botao.textContent;
-  botao.disabled = true; botao.textContent = 'Enviando...';
+  botao.disabled = true; botao.textContent = T('Enviando...', 'Sending...');
   let ok = false;
   try {
     const r = await fetch(`https://formsubmit.co/ajax/${EMAIL_DESTINO}`, {
@@ -1097,6 +1160,7 @@ $('#form-captura').addEventListener('submit', async (e) => {
         _subject: `Pedido de proposta (mídia kit): ${$('#c-marca').value.trim()}`,
         _template: 'table', _captcha: 'false',
         origem: 'Pop-up do mídia kit Vai Ter Estrada',
+        idioma: IDIOMA === 'en' ? 'inglês (marca de fora do Brasil?)' : 'português',
         nome: $('#c-nome').value.trim(), marca: $('#c-marca').value.trim(), email: $('#c-email').value.trim(),
       }),
     });
@@ -1107,11 +1171,13 @@ $('#form-captura').addEventListener('submit', async (e) => {
     botao.disabled = false; botao.textContent = texto;
     let aviso = f.querySelector('.form-erro');
     if (!aviso) { aviso = document.createElement('p'); aviso.className = 'form-erro'; aviso.setAttribute('role', 'alert'); f.appendChild(aviso); }
-    aviso.innerHTML = `Não deu pra enviar agora. Escreve direto pra <a href="mailto:${EMAIL_DESTINO}">${EMAIL_DESTINO}</a> 💛`;
+    aviso.innerHTML = T(`Não deu pra enviar agora. Escreve direto pra <a href="mailto:${EMAIL_DESTINO}">${EMAIL_DESTINO}</a> 💛`, `Couldn't send it right now. Please email us at <a href="mailto:${EMAIL_DESTINO}">${EMAIL_DESTINO}</a> 💛`);
     return;
   }
   const nome = esc($('#c-nome').value.trim().split(' ')[0]);
-  $('#captura-conteudo').innerHTML = `<span class="sobretitulo">Tudo certo</span><h2 id="titulo-captura">Obrigada, <em>${nome}!</em></h2><p class="captura-texto">Recebemos seu pedido. A gente te responde no e-mail em breve, com a proposta pra sua marca.</p><button class="btn btn-terra" type="button" id="ok-captura">Fechar</button>`;
+  $('#captura-conteudo').innerHTML = T(
+    `<span class="sobretitulo">Tudo certo</span><h2 id="titulo-captura">Obrigada, <em>${nome}!</em></h2><p class="captura-texto">Recebemos seu pedido. A gente te responde no e-mail em breve, com a proposta pra sua marca.</p><button class="btn btn-terra" type="button" id="ok-captura">Fechar</button>`,
+    `<span class="sobretitulo">All set</span><h2 id="titulo-captura">Thank you, <em>${nome}!</em></h2><p class="captura-texto">We got your request. We'll reply by email soon with a proposal for your brand.</p><button class="btn btn-terra" type="button" id="ok-captura">Close</button>`);
   $('#ok-captura').addEventListener('click', fecharCaptura);
   $('#ok-captura').focus();
 });
@@ -1125,6 +1191,35 @@ const aoRolar = () => {
 };
 addEventListener('scroll', aoRolar, { passive: true });
 aoRolar();
+
+/* ---------- trocar idioma ----------
+   Textos fixos: atributo data-en (o português fica guardado em data-pt).
+   Partes montadas pelo código: desenhadas de novo com T(). */
+function aplicarIdioma(novo, salvar) {
+  IDIOMA = IDIOMAS_OK.includes(novo) ? novo : 'pt';
+  if (salvar) { try { localStorage.setItem('vteIdioma', IDIOMA); } catch (e) {} }
+  const en = IDIOMA === 'en';
+  document.documentElement.lang = en ? 'en' : 'pt-BR';
+  document.title = en ? 'Vai Ter Estrada | Media kit' : 'Vai Ter Estrada | Mídia kit';
+  document.querySelectorAll('[data-en]').forEach((el) => {
+    if (el.dataset.pt === undefined) el.dataset.pt = el.innerHTML;
+    el.innerHTML = en ? el.dataset.en : el.dataset.pt;
+  });
+  document.querySelectorAll('[data-en-aria-label]').forEach((el) => {
+    if (el.dataset.ptAriaLabel === undefined) el.dataset.ptAriaLabel = el.getAttribute('aria-label') || '';
+    el.setAttribute('aria-label', en ? el.dataset.enAriaLabel : el.dataset.ptAriaLabel);
+  });
+  document.querySelectorAll('[data-en-alt]').forEach((el) => {
+    if (el.dataset.ptAlt === undefined) el.dataset.ptAlt = el.getAttribute('alt') || '';
+    el.setAttribute('alt', en ? el.dataset.enAlt : el.dataset.ptAlt);
+  });
+  document.querySelectorAll('[data-idioma]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.idioma === IDIOMA)));
+  // desenha de novo o que vem do banco, já no idioma novo
+  if (ULTIMO_CONTEUDO) aplicarConteudo(ULTIMO_CONTEUDO);
+  if (ULTIMO_IG) aplicarInstagram(ULTIMO_IG, ULTIMO_HIST);
+}
+document.querySelectorAll('[data-idioma]').forEach((b) => b.addEventListener('click', () => aplicarIdioma(b.dataset.idioma, true)));
+aplicarIdioma(IDIOMA, false);
 
 $('#ano').textContent = new Date().getFullYear();
 document.querySelectorAll('.revelar, [data-num]').forEach(observar);
