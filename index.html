@@ -7,7 +7,7 @@
 <meta name="description" content="Mídia kit do Vai Ter Estrada: Nath e João criam conteúdo sobre camping, viagens, hospedagens e experiências ao ar livre. Números atualizados direto do Instagram.">
 <meta property="og:title" content="Vai Ter Estrada | Mídia kit">
 <meta property="og:description" content="Camping, viagens e experiências ao ar livre por Nath e João. Números ao vivo do Instagram.">
-<meta property="og:image" content="img/barraca-por-do-sol.jpg">
+<meta property="og:image" content="img/capa-barraca.jpg">
 <link rel="icon" type="image/png" href="img/logo.png">
 <link rel="apple-touch-icon" href="img/logo-fundo-branco.webp">
 <meta name="theme-color" content="#5B2A14">
@@ -93,7 +93,7 @@
   /* ===== CAPA ===== */
   .capa{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;color:var(--papel);overflow:hidden;background:var(--terra-escura)}
   /* a posição (2º número) desce a foto: árvore mais pra cima, mais barraca aparecendo */
-  .capa-fundo{position:absolute;inset:0;background:url(img/barraca-por-do-sol.jpg) center 82%/cover no-repeat;transform:scale(1.06);animation:respira 18s ease-in-out infinite alternate}
+  .capa-fundo{position:absolute;inset:0;background:url(img/capa-barraca.jpg) center 82%/cover no-repeat;transform:scale(1.06);animation:respira 18s ease-in-out infinite alternate}
   @keyframes respira{to{transform:scale(1.14) translateY(-1.5%)}}
   @media (prefers-reduced-motion:reduce){.capa-fundo{animation:none}}
   /* luz no meio (a barraca aparece) e sombra só em cima e embaixo, pro texto ler bem */
@@ -106,7 +106,7 @@
   .capa h1 em{font-style:italic;font-weight:700;letter-spacing:-.04em;color:var(--sol)}
   .capa-por{display:block;text-align:right;font-family:var(--titulo);font-style:italic;font-weight:600;font-size:clamp(.85rem,1.4vw,1.1rem);opacity:.9;color:#fff;margin-top:.15em;text-shadow:0 2px 14px rgba(0,0,0,.35)}
   .capa-base{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap}
-  .capa-sub{font-size:1.06rem;max-width:480px;color:rgba(255,252,246,.9)}
+  .capa-sub{font-size:1.06rem;max-width:480px;color:rgba(255,252,246,.92);text-shadow:0 1px 12px rgba(43,26,16,.55)}
   .capa-sub b{color:#fff}
   .capa-botoes{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
   /* selo do logo lá em cima, à direita (como no Canva) */
@@ -118,10 +118,19 @@
   .capa-numeros strong{display:block;font-family:var(--titulo);font-size:clamp(1.6rem,3.4vw,2.5rem);font-weight:800;letter-spacing:-.03em;line-height:1.1}
   .capa-numeros span{font-size:.8rem;color:rgba(255,252,246,.75)}
   @media (max-width:860px){
-    .capa-selo{top:80px;width:150px}
-    .capa-conteudo{padding-top:250px}
-    .capa h1{white-space:normal;font-size:clamp(3.2rem,16vw,5rem)}
-    .capa-por{text-align:left}
+    /* celular: tudo empilhado e centralizado (logo, título, texto, botões, números) */
+    .capa{flex-direction:column;align-items:stretch}
+    .capa-selo{position:relative;top:auto;right:auto;margin:92px auto 0;width:min(42vw,170px)}
+    .capa-conteudo{min-height:0;flex:1;justify-content:flex-start;padding-top:14px;padding-bottom:32px;text-align:center}
+    .capa-titulo{align-self:center;margin-bottom:22px}
+    .capa-kit{margin-left:0}
+    .capa h1{white-space:normal;font-size:clamp(3rem,15vw,4.6rem)}
+    .capa-por{text-align:center}
+    .capa-base{justify-content:center}
+    .capa-sub{margin:0 auto}
+    .capa-botoes{justify-content:center;gap:10px}
+    .capa-botoes .btn{padding:12px 20px;font-size:.9rem}
+    .capa-numeros{text-align:left}
     .topo .btn{padding:9px 14px;font-size:.8rem}
     .capa-numeros{grid-template-columns:repeat(2,1fr)}
     .capa-numeros div:nth-child(3){padding-left:0;border-left:0}
@@ -145,7 +154,13 @@
   .temas{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}
   .temas span{background:var(--mato-claro);color:var(--mato);font-weight:600;font-size:.84rem;padding:7px 14px;border-radius:999px}
   .frase{font-family:var(--titulo);font-style:italic;font-weight:700;font-size:1.35rem;color:var(--terra);line-height:1.3;border-left:3px solid var(--sol);padding-left:16px;margin-top:8px}
-  @media (max-width:860px){.sobre-grade{grid-template-columns:1fr;gap:32px}.filme{width:180px;margin:0 auto}.janela-corpo,.sobre .janela-corpo{padding:28px 20px}}
+  @media (max-width:860px){
+    .sobre-grade{grid-template-columns:1fr;gap:32px}
+    .filme{width:170px;margin:0 auto}
+    .janela-corpo,.sobre .janela-corpo{padding:28px 20px}
+    /* etiqueta pra fora da foto, no cantinho (não tampa os rostos) */
+    .filme .etiqueta{right:-74px;bottom:18px;font-size:.82rem;padding:7px 12px;border-radius:10px}
+  }
 
   /* ===== NÚMEROS ===== */
   .numeros{background:var(--terra);color:var(--papel)}
@@ -579,7 +594,7 @@
     <div class="janela-barra"><span class="pontos"><i></i><i></i><i></i></span><span class="url">vaiterestrada / valores-e-pacotes</span></div>
     <button class="captura-fechar" id="fechar-captura" type="button" aria-label="Fechar">×</button>
     <div class="janela-corpo" id="captura-conteudo">
-      <img class="captura-foto" src="img/barraca-por-do-sol.jpg" alt="" loading="lazy">
+      <img class="captura-foto" src="img/capa-barraca.jpg" alt="" loading="lazy">
       <span class="sobretitulo">Valores e pacotes</span>
       <h2 id="titulo-captura">Quer receber nossa <em>proposta?</em></h2>
       <p class="captura-texto">Deixe seu nome, a marca e o e-mail que a gente te manda os formatos, valores e ideias de conteúdo pra sua marca.</p>
