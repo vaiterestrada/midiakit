@@ -92,7 +92,8 @@
 
   /* ===== CAPA ===== */
   .capa{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;color:var(--papel);overflow:hidden;background:var(--terra-escura)}
-  .capa-fundo{position:absolute;inset:0;background:url(img/barraca-por-do-sol.jpg) center 62%/cover no-repeat;transform:scale(1.06);animation:respira 18s ease-in-out infinite alternate}
+  /* a posição (2º número) desce a foto: árvore mais pra cima, mais barraca aparecendo */
+  .capa-fundo{position:absolute;inset:0;background:url(img/barraca-por-do-sol.jpg) center 82%/cover no-repeat;transform:scale(1.06);animation:respira 18s ease-in-out infinite alternate}
   @keyframes respira{to{transform:scale(1.14) translateY(-1.5%)}}
   @media (prefers-reduced-motion:reduce){.capa-fundo{animation:none}}
   /* luz no meio (a barraca aparece) e sombra só em cima e embaixo, pro texto ler bem */
@@ -101,30 +102,25 @@
   /* título como no Canva: uma linha só, cor de terra, "mídia kit" em cima e "por Nath e João" embaixo */
   .capa-titulo{position:relative;align-self:flex-start;max-width:100%}
   .capa-kit{display:block;font-family:var(--titulo);font-style:italic;font-weight:600;font-size:clamp(1rem,2.2vw,1.6rem);letter-spacing:-.01em;color:#fff;margin-left:.3em;text-shadow:0 2px 14px rgba(0,0,0,.35)}
-  .capa h1{font-size:clamp(3.2rem,10.4vw,9.4rem);font-weight:800;letter-spacing:-.055em;line-height:.9;margin:0;text-transform:lowercase;color:var(--ferrugem);white-space:nowrap;text-shadow:0 4px 30px rgba(59,26,11,.35)}
-  .capa h1 em{font-style:italic;font-weight:700;letter-spacing:-.04em}
+  .capa h1{font-size:clamp(2.6rem,7.4vw,6.6rem);font-weight:800;letter-spacing:-.05em;line-height:.92;margin:0;text-transform:lowercase;color:var(--papel);white-space:nowrap;text-shadow:0 4px 30px rgba(59,26,11,.4)}
+  .capa h1 em{font-style:italic;font-weight:700;letter-spacing:-.04em;color:var(--sol)}
   .capa-por{display:block;text-align:right;font-family:var(--titulo);font-style:italic;font-weight:600;font-size:clamp(1rem,2.2vw,1.6rem);color:#fff;margin-top:.15em;text-shadow:0 2px 14px rgba(0,0,0,.35)}
   .capa-base{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap}
   .capa-sub{font-size:1.06rem;max-width:480px;color:rgba(255,252,246,.9)}
   .capa-sub b{color:#fff}
   .capa-botoes{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
   /* selo do logo lá em cima, à direita (como no Canva) */
-  .capa-selo{position:absolute;z-index:2;top:92px;right:max(24px,calc((100vw - var(--max))/2 + 24px));width:clamp(120px,15vw,190px);aspect-ratio:1}
+  .capa-selo{position:absolute;z-index:2;top:88px;right:max(24px,calc((100vw - var(--max))/2 + 24px));width:clamp(170px,21vw,280px);aspect-ratio:1}
   .capa-selo img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 14px 30px rgba(0,0,0,.4))}
-  .selo-giro{position:absolute;inset:-14%;animation:gira 30s linear infinite}
-  .selo-giro text{font:700 10.5px var(--texto);letter-spacing:.32em;fill:rgba(255,252,246,.85);text-transform:uppercase}
-  @keyframes gira{to{transform:rotate(360deg)}}
-  @media (prefers-reduced-motion:reduce){.selo-giro{animation:none}}
   .capa-numeros{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:30px;border-top:1px solid rgba(255,252,246,.25)}
   .capa-numeros div{padding:18px 18px 0 0}
   .capa-numeros div+div{padding-left:18px;border-left:1px solid rgba(255,252,246,.18)}
   .capa-numeros strong{display:block;font-family:var(--titulo);font-size:clamp(1.6rem,3.4vw,2.5rem);font-weight:800;letter-spacing:-.03em;line-height:1.1}
   .capa-numeros span{font-size:.8rem;color:rgba(255,252,246,.75)}
   @media (max-width:860px){
-    .capa-selo{top:84px;width:96px}
-    .selo-giro{display:none}
-    .capa-conteudo{padding-top:200px}
-    .capa h1{white-space:normal;font-size:clamp(3.4rem,17vw,5.4rem)}
+    .capa-selo{top:82px;width:128px}
+    .capa-conteudo{padding-top:230px}
+    .capa h1{white-space:normal;font-size:clamp(3rem,15vw,4.6rem)}
     .capa-por{text-align:left}
     .topo .btn{padding:9px 14px;font-size:.8rem}
     .capa-numeros{grid-template-columns:repeat(2,1fr)}
@@ -235,7 +231,10 @@
   .alem{background:var(--ceu);color:var(--papel);overflow:hidden}
   .alem h2{color:var(--papel)}
   .alem .sobretitulo{color:rgba(255,252,246,.7)}
-  .alem-texto{display:grid;grid-template-columns:1fr 1fr;gap:20px 48px;align-items:end;margin-bottom:40px}
+  .alem-texto{display:grid;grid-template-columns:1.25fr .75fr;gap:20px 48px;align-items:end;margin-bottom:44px}
+  .alem-texto h2{font-size:clamp(3rem,7.6vw,6.4rem);line-height:.95}
+  .alem .sobretitulo{font-size:.9rem;letter-spacing:.24em}
+  .alem .sobretitulo::before{width:40px}
   .alem-texto p{color:rgba(255,252,246,.85);font-size:1.02rem}
   .alem-texto .frase-curta{font-family:var(--titulo);font-weight:700;font-style:italic;font-size:1.4rem;color:var(--sol);line-height:1.3;margin-top:14px}
   /* comentários em cartões, passando em duas fileiras (para no mouse) */
@@ -277,6 +276,15 @@
   .faixa-marcas:hover .faixa-trilho{animation-play-state:paused}
   .faixa-trilho span{display:inline-flex;align-items:center;gap:44px;font-family:var(--titulo);font-weight:800;font-size:clamp(1.3rem,2.6vw,1.9rem);letter-spacing:-.02em;color:var(--terra);white-space:nowrap}
   .faixa-trilho span::after{content:"✦";font-size:.7em;color:var(--sol)}
+  /* logo da marca num quadradinho branco (as logos têm fundos diferentes) */
+  .faixa-logo{display:inline-flex;align-items:center;gap:14px;white-space:nowrap}
+  .faixa-logo i{width:76px;height:76px;flex-shrink:0;border-radius:20px;background:#fff;display:grid;place-items:center;overflow:hidden;box-shadow:0 6px 18px rgba(43,26,16,.1)}
+  .faixa-logo img{width:100%;height:100%;object-fit:cover}
+  .faixa-logo img.contida{object-fit:contain;padding:10px}
+  .faixa-logo b{font-family:var(--titulo);font-weight:700;font-size:1.05rem;color:var(--terra)}
+  /* frase da seção de marcas numa linha só (no computador) */
+  .parcerias .cab p{max-width:none}
+  @media (min-width:960px){.parcerias .cab p{white-space:nowrap}}
   @media (prefers-reduced-motion:reduce){.faixa-trilho{animation:none}}
   .formato{font-size:.78rem;font-weight:600;background:var(--sol-claro);color:var(--terra);padding:5px 12px;border-radius:999px;white-space:nowrap}
   @media (max-width:860px){.parc-grade{grid-template-columns:repeat(2,1fr);gap:14px}.celular{border-width:5px;border-radius:22px}.celular video,.celular img{border-radius:17px}}
@@ -365,7 +373,6 @@
 <section class="capa" id="capa">
   <div class="capa-fundo" aria-hidden="true"></div>
   <div class="capa-selo" aria-hidden="true">
-    <svg class="selo-giro" viewBox="0 0 200 200"><defs><path id="circulo" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs><text><textPath href="#circulo">nossas aventuras · nossas histórias · nossa estrada · </textPath></text></svg>
     <img src="img/logo.png" alt="" width="520" height="520">
   </div>
   <div class="container capa-conteudo">
@@ -616,12 +623,12 @@ const CONTEUDO_PADRAO = {
   },
   tiktok: { usuario: 'vaiterestrada', views: '5 mil', curtidas: '232', periodo: 'views em 28 dias (set/2026)' },
   parcerias: [
-    { marca: 'Camping Zé Roque', formato: 'Storytelling', video: 'https://youtube.com/shorts/72OwKxBbi48', capa: 'img/capas/zeroque.jpg' },
-    { marca: 'Bestway', formato: 'Review', video: 'https://youtube.com/shorts/0q-4tCV8TJY', capa: 'img/capas/bestway.jpg' },
-    { marca: 'Camping Morro Azul', formato: 'Storytelling', video: 'https://youtu.be/HnMlRyKu9DE', capa: 'img/capas/morroazul.jpg' },
-    { marca: 'HolyFoods', formato: 'Demonstração', video: 'https://youtube.com/shorts/IGV5whxSaKM', capa: 'img/capas/holyfoods.jpg' },
-    { marca: 'Stanley', formato: 'Anúncio', video: 'https://youtube.com/shorts/lKSGmIx6t-g', capa: 'img/capas/stanley.jpg' },
-    { marca: 'Dfense Pro', formato: 'Demonstração', video: 'https://youtube.com/shorts/Dd6Ul6OPgho', capa: 'img/capas/dfense.jpg' }
+    { marca: 'Camping Zé Roque', formato: 'Storytelling', video: 'https://youtube.com/shorts/72OwKxBbi48', capa: 'img/capas/zeroque.jpg', logo: 'img/marcas/zeroque.jpg' },
+    { marca: 'Bestway', formato: 'Review', video: 'https://youtube.com/shorts/0q-4tCV8TJY', capa: 'img/capas/bestway.jpg', logo: 'img/marcas/bestway.png' },
+    { marca: 'Camping Morro Azul', formato: 'Storytelling', video: 'https://youtu.be/HnMlRyKu9DE', capa: 'img/capas/morroazul.jpg', logo: 'img/marcas/morroazul.jpg' },
+    { marca: 'HolyFoods', formato: 'Demonstração', video: 'https://youtube.com/shorts/IGV5whxSaKM', capa: 'img/capas/holyfoods.jpg', logo: 'img/marcas/holyfoods.jpg' },
+    { marca: 'Stanley', formato: 'Anúncio', video: 'https://youtube.com/shorts/lKSGmIx6t-g', capa: 'img/capas/stanley.jpg', logo: 'img/marcas/stanley.png' },
+    { marca: 'Dfense Pro', formato: 'Demonstração', video: 'https://youtube.com/shorts/Dd6Ul6OPgho', capa: 'img/capas/dfense.jpg', logo: 'img/marcas/dfense.jpg' }
   ],
   // comentários reais (copiados dos prints do Instagram)
   comentarios: [
@@ -847,11 +854,14 @@ function aplicarTikTokEContato(c) {
       </div>
     </button>`).join('');
   PARCERIAS = c.parcerias || [];
-  // faixa: nomes das marcas, repetidos pra deslizar sem buraco
-  const nomes = [...new Set(PARCERIAS.map((p) => p.marca).filter(Boolean))];
-  const umaVolta = nomes.map((n) => `<span>${esc(n)}</span>`).join('');
-  $('#faixa-marcas').innerHTML = nomes.length ? umaVolta.repeat(nomes.length < 5 ? 4 : 2) : '';
-  $('#faixa-marcas').closest('.faixa-marcas').hidden = !nomes.length;
+  // faixa: logo de cada marca (ou o nome, se não tiver logo), repetida pra deslizar sem buraco
+  const vistas = new Set();
+  const marcas = PARCERIAS.filter((p) => p.marca && !vistas.has(p.marca) && vistas.add(p.marca));
+  const umaVolta = marcas.map((p) => p.logo
+    ? `<span class="faixa-logo"><i><img src="${esc(p.logo)}" alt="" loading="lazy" class="${/\.png(\?|$)/i.test(p.logo) ? 'contida' : ''}"></i><b>${esc(p.marca)}</b></span>`
+    : `<span>${esc(p.marca)}</span>`).join('');
+  $('#faixa-marcas').innerHTML = marcas.length ? umaVolta.repeat(marcas.length < 5 ? 4 : 2) : '';
+  $('#faixa-marcas').closest('.faixa-marcas').hidden = !marcas.length;
   ligarPrevias();
 
   // contato
