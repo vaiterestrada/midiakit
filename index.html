@@ -55,7 +55,7 @@
   .sobretitulo::before{content:"";width:28px;height:1px;background:currentColor}
   .cab{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:44px;flex-wrap:wrap}
   .cab h2{margin-top:14px}
-  .cab p{max-width:430px;color:var(--tinta-2)}
+  .cab p{max-width:620px;color:var(--tinta-2)}
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 24px;border-radius:999px;font-weight:600;font-size:.95rem;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .25s,background .25s,color .25s}
   .btn:hover{transform:translateY(-2px)}
   .btn-sol{background:var(--sol);color:var(--terra-escura)}
@@ -102,15 +102,15 @@
   /* título como no Canva: uma linha só, cor de terra, "mídia kit" em cima e "por Nath e João" embaixo */
   .capa-titulo{position:relative;align-self:flex-start;max-width:100%}
   .capa-kit{display:block;font-family:var(--titulo);font-style:italic;font-weight:600;font-size:clamp(1rem,2.2vw,1.6rem);letter-spacing:-.01em;color:#fff;margin-left:.3em;text-shadow:0 2px 14px rgba(0,0,0,.35)}
-  .capa h1{font-size:clamp(2.6rem,7.4vw,6.6rem);font-weight:800;letter-spacing:-.05em;line-height:.92;margin:0;text-transform:lowercase;color:var(--papel);white-space:nowrap;text-shadow:0 4px 30px rgba(59,26,11,.4)}
+  .capa h1{font-size:clamp(3rem,8.4vw,7.6rem);font-weight:800;letter-spacing:-.05em;line-height:.92;margin:0;text-transform:lowercase;color:var(--papel);white-space:nowrap;text-shadow:0 4px 30px rgba(59,26,11,.4)}
   .capa h1 em{font-style:italic;font-weight:700;letter-spacing:-.04em;color:var(--sol)}
-  .capa-por{display:block;text-align:right;font-family:var(--titulo);font-style:italic;font-weight:600;font-size:clamp(1rem,2.2vw,1.6rem);color:#fff;margin-top:.15em;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+  .capa-por{display:block;text-align:right;font-family:var(--titulo);font-style:italic;font-weight:600;font-size:clamp(.85rem,1.4vw,1.1rem);opacity:.9;color:#fff;margin-top:.15em;text-shadow:0 2px 14px rgba(0,0,0,.35)}
   .capa-base{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap}
   .capa-sub{font-size:1.06rem;max-width:480px;color:rgba(255,252,246,.9)}
   .capa-sub b{color:#fff}
   .capa-botoes{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
   /* selo do logo lá em cima, à direita (como no Canva) */
-  .capa-selo{position:absolute;z-index:2;top:88px;right:max(24px,calc((100vw - var(--max))/2 + 24px));width:clamp(170px,21vw,280px);aspect-ratio:1}
+  .capa-selo{position:absolute;z-index:2;top:84px;right:max(24px,calc((100vw - var(--max))/2 + 24px));width:clamp(200px,25vw,340px);aspect-ratio:1}
   .capa-selo img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 14px 30px rgba(0,0,0,.4))}
   .capa-numeros{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:30px;border-top:1px solid rgba(255,252,246,.25)}
   .capa-numeros div{padding:18px 18px 0 0}
@@ -118,9 +118,9 @@
   .capa-numeros strong{display:block;font-family:var(--titulo);font-size:clamp(1.6rem,3.4vw,2.5rem);font-weight:800;letter-spacing:-.03em;line-height:1.1}
   .capa-numeros span{font-size:.8rem;color:rgba(255,252,246,.75)}
   @media (max-width:860px){
-    .capa-selo{top:82px;width:128px}
-    .capa-conteudo{padding-top:230px}
-    .capa h1{white-space:normal;font-size:clamp(3rem,15vw,4.6rem)}
+    .capa-selo{top:80px;width:150px}
+    .capa-conteudo{padding-top:250px}
+    .capa h1{white-space:normal;font-size:clamp(3.2rem,16vw,5rem)}
     .capa-por{text-align:left}
     .topo .btn{padding:9px 14px;font-size:.8rem}
     .capa-numeros{grid-template-columns:repeat(2,1fr)}
@@ -231,7 +231,10 @@
   .alem{background:var(--ceu);color:var(--papel);overflow:hidden}
   .alem h2{color:var(--papel)}
   .alem .sobretitulo{color:rgba(255,252,246,.7)}
-  .alem-texto{display:grid;grid-template-columns:1.25fr .75fr;gap:20px 48px;align-items:end;margin-bottom:44px}
+  /* título e texto alinhados no topo (o título sobe); texto mais largo = menos linhas */
+  .alem{padding-top:72px}
+  .alem-texto{display:grid;grid-template-columns:1fr 1fr;gap:20px 56px;align-items:start;margin-bottom:44px}
+  .alem-texto > div:last-child{padding-top:38px}
   .alem-texto h2{font-size:clamp(3rem,7.6vw,6.4rem);line-height:.95}
   .alem .sobretitulo{font-size:.9rem;letter-spacing:.24em}
   .alem .sobretitulo::before{width:40px}
@@ -271,14 +274,15 @@
   .parc-topo strong{font-family:var(--titulo);font-size:1.15rem;line-height:1.15}
   /* faixa com os nomes das marcas passando (igual ao portfólio) */
   .faixa-marcas{overflow:hidden;border-top:1px solid var(--linha);border-bottom:1px solid var(--linha);padding:16px 0;margin:0 0 40px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-  .faixa-trilho{display:flex;gap:44px;width:max-content;animation:desliza-faixa 30s linear infinite}
-  @keyframes desliza-faixa{to{transform:translateX(calc(-50% - 22px))}}
+  .faixa-trilho{display:flex;align-items:center;gap:56px;width:max-content;animation:desliza-faixa 30s linear infinite}
+  @keyframes desliza-faixa{to{transform:translateX(calc(-50% - 28px))}}
   .faixa-marcas:hover .faixa-trilho{animation-play-state:paused}
   .faixa-trilho span{display:inline-flex;align-items:center;gap:44px;font-family:var(--titulo);font-weight:800;font-size:clamp(1.3rem,2.6vw,1.9rem);letter-spacing:-.02em;color:var(--terra);white-space:nowrap}
   .faixa-trilho span::after{content:"✦";font-size:.7em;color:var(--sol)}
   /* logo da marca num quadradinho branco (as logos têm fundos diferentes) */
-  .faixa-logo{display:inline-flex;align-items:center;gap:14px;white-space:nowrap}
-  .faixa-logo i{width:76px;height:76px;flex-shrink:0;border-radius:20px;background:#fff;display:grid;place-items:center;overflow:hidden;box-shadow:0 6px 18px rgba(43,26,16,.1)}
+  .faixa-logo{display:inline-flex;align-items:center}
+  .faixa-trilho span.faixa-logo::after{content:none}
+  .faixa-logo i{width:92px;height:92px;flex-shrink:0;border-radius:20px;background:#fff;display:grid;place-items:center;overflow:hidden;box-shadow:0 6px 18px rgba(43,26,16,.1)}
   .faixa-logo img{width:100%;height:100%;object-fit:cover}
   .faixa-logo img.contida{object-fit:contain;padding:10px}
   .faixa-logo b{font-family:var(--titulo);font-weight:700;font-size:1.05rem;color:var(--terra)}
@@ -432,7 +436,7 @@
         <span class="sobretitulo">Redes sociais</span>
         <h2>Números que <em>crescem</em> com a estrada</h2>
       </div>
-      <p>Atualizados sozinhos, direto do Instagram, várias vezes por dia. O que você vê aqui é o que está acontecendo agora no perfil.</p>
+      <p>Atualizados sozinhos, direto do Instagram, várias vezes por dia.</p>
     </div>
     <div class="kpis revelar">
       <div class="kpi destaque"><span class="kpi-rotulo">👥 Seguidores</span><div class="kpi-valor" data-num="seguidores">–</div><div class="kpi-sub" id="kpi-crescimento">no Instagram</div></div>
@@ -615,7 +619,7 @@ const CONTEUDO_PADRAO = {
   sobre2: 'Nossa comunicação é leve, próxima e espontânea, misturando storytelling, informação e experiências reais para fazer quem acompanha não apenas conhecer um lugar, mas sentir vontade de viver aquilo também.',
   frase: 'Porque não é só sobre o destino. É sobre o que acontece pelo caminho.',
   temas: ['Camping', 'Viagens', 'Hospedagens', 'Ao ar livre', 'Cozinha de camping', 'Equipamentos'],
-  numeros_texto: 'A gente acredita que influência vai muito além de números. Visualizações, alcance e engajamento importam, e trabalhamos para que cada conteúdo gere resultado para as marcas que caminham com a gente. Mas, antes de tudo, vem a conexão: queremos que quem assiste se identifique e sinta que está vivendo a experiência junto com a gente.',
+  numeros_texto: 'Views, alcance e engajamento importam, e cada conteúdo é pensado pra gerar resultado pra marca. Mas antes vem a conexão: quem assiste se identifica e sente que está vivendo a experiência junto com a gente.',
   audiencia: {
     fonte: 'Instagram Insights, outubro de 2026', mulheres: 55.8, homens: 44.2,
     idades: [{ faixa: '13-17', pct: 0.6 }, { faixa: '18-24', pct: 3.3 }, { faixa: '25-34', pct: 19.6 }, { faixa: '35-44', pct: 30.0 }, { faixa: '45-54', pct: 32.2 }, { faixa: '55-64', pct: 11.8 }, { faixa: '65+', pct: 2.5 }],
@@ -623,12 +627,12 @@ const CONTEUDO_PADRAO = {
   },
   tiktok: { usuario: 'vaiterestrada', views: '5 mil', curtidas: '232', periodo: 'views em 28 dias (set/2026)' },
   parcerias: [
-    { marca: 'Camping Zé Roque', formato: 'Storytelling', video: 'https://youtube.com/shorts/72OwKxBbi48', capa: 'img/capas/zeroque.jpg', logo: 'img/marcas/zeroque.jpg' },
-    { marca: 'Bestway', formato: 'Review', video: 'https://youtube.com/shorts/0q-4tCV8TJY', capa: 'img/capas/bestway.jpg', logo: 'img/marcas/bestway.png' },
-    { marca: 'Camping Morro Azul', formato: 'Storytelling', video: 'https://youtu.be/HnMlRyKu9DE', capa: 'img/capas/morroazul.jpg', logo: 'img/marcas/morroazul.jpg' },
     { marca: 'HolyFoods', formato: 'Demonstração', video: 'https://youtube.com/shorts/IGV5whxSaKM', capa: 'img/capas/holyfoods.jpg', logo: 'img/marcas/holyfoods.jpg' },
     { marca: 'Stanley', formato: 'Anúncio', video: 'https://youtube.com/shorts/lKSGmIx6t-g', capa: 'img/capas/stanley.jpg', logo: 'img/marcas/stanley.png' },
-    { marca: 'Dfense Pro', formato: 'Demonstração', video: 'https://youtube.com/shorts/Dd6Ul6OPgho', capa: 'img/capas/dfense.jpg', logo: 'img/marcas/dfense.jpg' }
+    { marca: 'Dfense Pro', formato: 'Demonstração', video: 'https://youtube.com/shorts/Dd6Ul6OPgho', capa: 'img/capas/dfense.jpg', logo: 'img/marcas/dfense.jpg' },
+    { marca: 'Camping Zé Roque', formato: 'Storytelling', video: 'https://youtube.com/shorts/72OwKxBbi48', capa: 'img/capas/zeroque.jpg', logo: 'img/marcas/zeroque.jpg' },
+    { marca: 'Bestway', formato: 'Review', video: 'https://youtube.com/shorts/0q-4tCV8TJY', capa: 'img/capas/bestway.jpg', logo: 'img/marcas/bestway.png' },
+    { marca: 'Camping Morro Azul', formato: 'Storytelling', video: 'https://youtu.be/HnMlRyKu9DE', capa: 'img/capas/morroazul.jpg', logo: 'img/marcas/morroazul.jpg' }
   ],
   // comentários reais (copiados dos prints do Instagram)
   comentarios: [
@@ -858,9 +862,10 @@ function aplicarTikTokEContato(c) {
   const vistas = new Set();
   const marcas = PARCERIAS.filter((p) => p.marca && !vistas.has(p.marca) && vistas.add(p.marca));
   const umaVolta = marcas.map((p) => p.logo
-    ? `<span class="faixa-logo"><i><img src="${esc(p.logo)}" alt="" loading="lazy" class="${/\.png(\?|$)/i.test(p.logo) ? 'contida' : ''}"></i><b>${esc(p.marca)}</b></span>`
+    ? `<span class="faixa-logo"><i><img src="${esc(p.logo)}" alt="${esc(p.marca)}" title="${esc(p.marca)}" loading="lazy" class="${/\.png(\?|$)/i.test(p.logo) ? 'contida' : ''}"></i></span>`
     : `<span>${esc(p.marca)}</span>`).join('');
-  $('#faixa-marcas').innerHTML = marcas.length ? umaVolta.repeat(marcas.length < 5 ? 4 : 2) : '';
+  // repete o bastante pra cobrir telas largas (número par, pra emendar certinho)
+  $('#faixa-marcas').innerHTML = marcas.length ? umaVolta.repeat(marcas.length < 4 ? 8 : 4) : '';
   $('#faixa-marcas').closest('.faixa-marcas').hidden = !marcas.length;
   ligarPrevias();
 
