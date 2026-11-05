@@ -27,6 +27,7 @@
     --ceu:#27318A;          /* azul dos títulos */
     --ceu-claro:#DDE1F4;
     --sol:#E9A23B;          /* pôr do sol */
+    --ferrugem:#C65A1E;     /* laranja-terra do título (como no Canva) */
     --sol-claro:#FBE8C6;
     --tinta:#2B1A10;
     --tinta-2:#6E5646;
@@ -39,7 +40,7 @@
   *,*::before,*::after{box-sizing:border-box}
   html{scroll-behavior:smooth;scroll-padding-top:72px;-webkit-text-size-adjust:100%}
   body{margin:0;background:var(--areia);color:var(--tinta);font-family:var(--texto);font-size:16px;line-height:1.6;overflow-x:hidden}
-  img,video{max-width:100%;display:block}
+  img,video{max-width:100%;height:auto;display:block}
   a{color:inherit}
   h1,h2,h3{font-family:var(--titulo);margin:0;line-height:1.05;letter-spacing:-.03em}
   h2{font-size:clamp(2.2rem,5.4vw,4.2rem);font-weight:800;color:var(--ceu)}
@@ -94,33 +95,37 @@
   .capa-fundo{position:absolute;inset:0;background:url(img/barraca-por-do-sol.jpg) center 62%/cover no-repeat;transform:scale(1.06);animation:respira 18s ease-in-out infinite alternate}
   @keyframes respira{to{transform:scale(1.14) translateY(-1.5%)}}
   @media (prefers-reduced-motion:reduce){.capa-fundo{animation:none}}
-  .capa::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(59,26,11,.45) 0%,rgba(59,26,11,.05) 35%,rgba(59,26,11,.55) 68%,rgba(59,26,11,.92) 100%)}
-  .capa-conteudo{position:relative;z-index:1;width:100%;padding-top:130px;padding-bottom:56px}
-  .capa-grade{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:end}
-  .ao-vivo{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;letter-spacing:.04em;background:rgba(255,252,246,.14);border:1px solid rgba(255,252,246,.3);padding:6px 12px;border-radius:999px;backdrop-filter:blur(6px)}
-  .ao-vivo i{width:8px;height:8px;border-radius:50%;background:#7CDB6A;box-shadow:0 0 0 0 rgba(124,219,106,.7);animation:pulso 1.8s infinite}
-  @keyframes pulso{70%{box-shadow:0 0 0 9px rgba(124,219,106,0)}100%{box-shadow:0 0 0 0 rgba(124,219,106,0)}}
-  .capa h1{font-size:clamp(3.4rem,11vw,8.6rem);font-weight:800;letter-spacing:-.05em;line-height:.88;margin:22px 0 14px;text-transform:lowercase}
-  .capa h1 span{display:block}
-  .capa h1 em{color:var(--sol);font-weight:700}
-  .capa-sub{font-size:1.1rem;max-width:520px;color:rgba(255,252,246,.88)}
+  /* luz no meio (a barraca aparece) e sombra só em cima e embaixo, pro texto ler bem */
+  .capa::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(59,26,11,.55) 0%,rgba(59,26,11,.12) 22%,rgba(59,26,11,0) 45%,rgba(59,26,11,.35) 66%,rgba(59,26,11,.9) 100%)}
+  .capa-conteudo{position:relative;z-index:1;width:100%;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:space-between;padding-top:150px;padding-bottom:48px}
+  /* título como no Canva: uma linha só, cor de terra, "mídia kit" em cima e "por Nath e João" embaixo */
+  .capa-titulo{position:relative;align-self:flex-start;max-width:100%}
+  .capa-kit{display:block;font-family:var(--titulo);font-style:italic;font-weight:600;font-size:clamp(1rem,2.2vw,1.6rem);letter-spacing:-.01em;color:#fff;margin-left:.3em;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+  .capa h1{font-size:clamp(3.2rem,10.4vw,9.4rem);font-weight:800;letter-spacing:-.055em;line-height:.9;margin:0;text-transform:lowercase;color:var(--ferrugem);white-space:nowrap;text-shadow:0 4px 30px rgba(59,26,11,.35)}
+  .capa h1 em{font-style:italic;font-weight:700;letter-spacing:-.04em}
+  .capa-por{display:block;text-align:right;font-family:var(--titulo);font-style:italic;font-weight:600;font-size:clamp(1rem,2.2vw,1.6rem);color:#fff;margin-top:.15em;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+  .capa-base{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap}
+  .capa-sub{font-size:1.06rem;max-width:480px;color:rgba(255,252,246,.9)}
   .capa-sub b{color:#fff}
-  .capa-botoes{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-  .capa-selo{justify-self:end;position:relative;width:min(300px,70vw);aspect-ratio:1}
-  .capa-selo img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 18px 40px rgba(0,0,0,.4))}
-  .selo-giro{position:absolute;inset:-11%;animation:gira 30s linear infinite}
+  .capa-botoes{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+  /* selo do logo lá em cima, à direita (como no Canva) */
+  .capa-selo{position:absolute;z-index:2;top:92px;right:max(24px,calc((100vw - var(--max))/2 + 24px));width:clamp(120px,15vw,190px);aspect-ratio:1}
+  .capa-selo img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 14px 30px rgba(0,0,0,.4))}
+  .selo-giro{position:absolute;inset:-14%;animation:gira 30s linear infinite}
   .selo-giro text{font:700 10.5px var(--texto);letter-spacing:.32em;fill:rgba(255,252,246,.85);text-transform:uppercase}
   @keyframes gira{to{transform:rotate(360deg)}}
   @media (prefers-reduced-motion:reduce){.selo-giro{animation:none}}
-  .capa-numeros{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:44px;border-top:1px solid rgba(255,252,246,.25)}
+  .capa-numeros{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:30px;border-top:1px solid rgba(255,252,246,.25)}
   .capa-numeros div{padding:18px 18px 0 0}
   .capa-numeros div+div{padding-left:18px;border-left:1px solid rgba(255,252,246,.18)}
   .capa-numeros strong{display:block;font-family:var(--titulo);font-size:clamp(1.6rem,3.4vw,2.5rem);font-weight:800;letter-spacing:-.03em;line-height:1.1}
   .capa-numeros span{font-size:.8rem;color:rgba(255,252,246,.75)}
   @media (max-width:860px){
-    .capa-grade{grid-template-columns:1fr}
-    .capa-selo{display:none}
-    .capa-conteudo{padding-top:110px}
+    .capa-selo{top:84px;width:96px}
+    .selo-giro{display:none}
+    .capa-conteudo{padding-top:200px}
+    .capa h1{white-space:normal;font-size:clamp(3.4rem,17vw,5.4rem)}
+    .capa-por{text-align:left}
     .topo .btn{padding:9px 14px;font-size:.8rem}
     .capa-numeros{grid-template-columns:repeat(2,1fr)}
     .capa-numeros div:nth-child(3){padding-left:0;border-left:0}
@@ -129,18 +134,22 @@
 
   /* ===== SOBRE ===== */
   .sobre{background:var(--areia)}
-  .sobre-grade{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
-  .filme{position:relative}
-  .filme img{border-radius:16px;box-shadow:var(--sombra);transform:rotate(-2.5deg);transition:transform .5s}
+  /* foto em tamanho fixo e pequeno, texto ao lado ocupando o resto */
+  .sobre .secao-compacta{padding:72px 0}
+  .sobre .janela-corpo{padding:44px 48px}
+  .sobre-grade{display:grid;grid-template-columns:240px 1fr;gap:48px;align-items:center}
+  .sobre-texto h2{font-size:clamp(2rem,3.8vw,3.1rem)}
+  .filme{position:relative;width:240px}
+  .filme img{width:100%;aspect-ratio:1124/2000;object-fit:cover;border-radius:16px;box-shadow:var(--sombra);transform:rotate(-2.5deg);transition:transform .5s}
   .filme:hover img{transform:rotate(0) scale(1.02)}
   .filme .etiqueta{position:absolute;right:-10px;bottom:28px;background:var(--sol);color:var(--terra-escura);font-family:var(--titulo);font-weight:800;padding:10px 16px;border-radius:12px;transform:rotate(4deg);box-shadow:var(--sombra)}
-  .sobre-texto h2{margin:14px 0 22px}
-  .sobre-texto p+p{margin-top:14px}
-  .sobre-texto p{color:var(--tinta-2);font-size:1.04rem}
-  .temas{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0}
+  .sobre-texto h2{margin:12px 0 18px}
+  .sobre-texto p+p{margin-top:12px}
+  .sobre-texto p{color:var(--tinta-2);font-size:1rem}
+  .temas{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}
   .temas span{background:var(--mato-claro);color:var(--mato);font-weight:600;font-size:.84rem;padding:7px 14px;border-radius:999px}
   .frase{font-family:var(--titulo);font-style:italic;font-weight:700;font-size:1.35rem;color:var(--terra);line-height:1.3;border-left:3px solid var(--sol);padding-left:16px;margin-top:8px}
-  @media (max-width:860px){.sobre-grade{grid-template-columns:1fr}.filme{max-width:320px;margin:0 auto}.janela-corpo{padding:28px 20px}}
+  @media (max-width:860px){.sobre-grade{grid-template-columns:1fr;gap:32px}.filme{width:180px;margin:0 auto}.janela-corpo,.sobre .janela-corpo{padding:28px 20px}}
 
   /* ===== NÚMEROS ===== */
   .numeros{background:var(--terra);color:var(--papel)}
@@ -226,15 +235,25 @@
   .alem{background:var(--ceu);color:var(--papel);overflow:hidden}
   .alem h2{color:var(--papel)}
   .alem .sobretitulo{color:rgba(255,252,246,.7)}
-  .alem-grade{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
-  .alem-texto p{color:rgba(255,252,246,.85);margin-top:18px;font-size:1.04rem}
-  .alem-texto .frase-curta{font-family:var(--titulo);font-weight:700;font-style:italic;font-size:1.4rem;color:var(--sol);line-height:1.3}
-  .comentarios{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 4px 20px;cursor:grab}
-  .comentarios img{flex:0 0 220px;width:220px;border-radius:18px;scroll-snap-align:center;box-shadow:0 20px 50px rgba(0,0,0,.35);transition:transform .35s}
-  .comentarios img:nth-child(odd){transform:rotate(-2deg)}
-  .comentarios img:nth-child(even){transform:rotate(2deg) translateY(14px)}
-  .comentarios img:hover{transform:rotate(0) scale(1.04)}
-  @media (max-width:860px){.alem-grade{grid-template-columns:1fr}}
+  .alem-texto{display:grid;grid-template-columns:1fr 1fr;gap:20px 48px;align-items:end;margin-bottom:40px}
+  .alem-texto p{color:rgba(255,252,246,.85);font-size:1.02rem}
+  .alem-texto .frase-curta{font-family:var(--titulo);font-weight:700;font-style:italic;font-size:1.4rem;color:var(--sol);line-height:1.3;margin-top:14px}
+  /* comentários em cartões, passando em duas fileiras (para no mouse) */
+  .comentarios{display:flex;flex-direction:column;gap:16px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+  .coment-fila{display:flex;gap:16px;width:max-content;animation:desliza var(--dur,55s) linear infinite}
+  .coment-fila.volta{animation-direction:reverse}
+  .comentarios:hover .coment-fila{animation-play-state:paused}
+  @keyframes desliza{to{transform:translateX(calc(-50% - 8px))}}
+  .coment{flex:0 0 300px;background:var(--papel);color:var(--tinta);border-radius:18px;padding:16px 18px;box-shadow:0 14px 34px rgba(0,0,0,.22);display:flex;flex-direction:column;gap:9px}
+  .coment-topo{display:flex;align-items:center;gap:10px}
+  .coment-avatar{width:34px;height:34px;flex-shrink:0;border-radius:50%;background:var(--sol-claro);color:var(--terra);display:grid;place-items:center;font:800 .95rem var(--titulo);text-transform:uppercase}
+  .coment-user{font-weight:700;font-size:.85rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .coment-user small{display:block;font-weight:500;color:var(--tinta-2);font-size:.72rem}
+  .coment-texto{font-size:.95rem;line-height:1.45}
+  .coment-tag{align-self:flex-start;font-size:.74rem;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--mato-claro);color:var(--mato)}
+  .coment-img{flex:0 0 200px;width:200px;aspect-ratio:369/799;object-fit:cover;object-position:top;border-radius:18px;box-shadow:0 14px 34px rgba(0,0,0,.22)}
+  @media (prefers-reduced-motion:reduce){.coment-fila{animation:none}.comentarios{overflow-x:auto}}
+  @media (max-width:860px){.alem-texto{grid-template-columns:1fr}.coment{flex-basis:260px}}
 
   /* ===== PARCERIAS ===== */
   .parcerias{background:var(--areia)}
@@ -248,8 +267,17 @@
   .parc:hover .reel-play span{transform:scale(1.1)}
   .parc .celular img{transition:transform .5s}
   .parc:hover .celular img{transform:scale(1.04)}
-  .parc-info{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px}
-  .parc-info strong{font-family:var(--titulo);font-size:1.15rem}
+  /* marca + formato em cima do vídeo (a marca bate o olho e já entende) */
+  .parc-topo{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px;min-height:30px}
+  .parc-topo strong{font-family:var(--titulo);font-size:1.15rem;line-height:1.15}
+  /* faixa com os nomes das marcas passando (igual ao portfólio) */
+  .faixa-marcas{overflow:hidden;border-top:1px solid var(--linha);border-bottom:1px solid var(--linha);padding:16px 0;margin:0 0 40px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .faixa-trilho{display:flex;gap:44px;width:max-content;animation:desliza-faixa 30s linear infinite}
+  @keyframes desliza-faixa{to{transform:translateX(calc(-50% - 22px))}}
+  .faixa-marcas:hover .faixa-trilho{animation-play-state:paused}
+  .faixa-trilho span{display:inline-flex;align-items:center;gap:44px;font-family:var(--titulo);font-weight:800;font-size:clamp(1.3rem,2.6vw,1.9rem);letter-spacing:-.02em;color:var(--terra);white-space:nowrap}
+  .faixa-trilho span::after{content:"✦";font-size:.7em;color:var(--sol)}
+  @media (prefers-reduced-motion:reduce){.faixa-trilho{animation:none}}
   .formato{font-size:.78rem;font-weight:600;background:var(--sol-claro);color:var(--terra);padding:5px 12px;border-radius:999px;white-space:nowrap}
   @media (max-width:860px){.parc-grade{grid-template-columns:repeat(2,1fr);gap:14px}.celular{border-width:5px;border-radius:22px}.celular video,.celular img{border-radius:17px}}
 
@@ -280,11 +308,35 @@
   .modal-info a{color:var(--sol)}
   .fechar{position:absolute;top:-46px;right:0;width:38px;height:38px;border-radius:50%;border:0;background:var(--papel);color:var(--terra);font-size:1.4rem;cursor:pointer;line-height:1}
 
-  /* botão fixo de parceria no celular */
+  /* botão fixo "Valores e pacotes" (abre o pop-up) */
   .flutuante{position:fixed;right:16px;bottom:16px;z-index:40;box-shadow:0 10px 30px rgba(0,0,0,.25);opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .3s,transform .3s}
   .flutuante.mostrar{opacity:1;transform:none;pointer-events:auto}
+
+  /* ===== POP-UP (igual ao do portfólio da Nath) ===== */
+  .captura{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:20px;background:rgba(43,26,16,.6);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+  .captura.aberta{opacity:1;visibility:visible}
+  .captura .janela{position:relative;width:100%;max-width:380px;max-height:calc(100vh - 32px);overflow-y:auto;box-shadow:0 30px 80px rgba(0,0,0,.4);transform:translateY(16px);transition:transform .35s}
+  .captura.aberta .janela{transform:none}
+  .captura .janela-barra{height:36px}
+  .captura .janela-corpo{padding:22px 24px 24px}
+  .captura h2{font-size:1.6rem;margin:10px 0 8px;color:var(--terra)}
+  .captura h2 em{color:var(--ferrugem)}
+  .captura-texto{color:var(--tinta-2);margin-bottom:14px;font-size:.88rem;line-height:1.5}
+  .captura-foto{display:block;width:100%;height:110px;object-fit:cover;object-position:center 70%;border-radius:12px;margin-bottom:14px}
+  .campo{margin-bottom:10px}
+  .campo label{display:block;font-size:.8rem;font-weight:600;margin-bottom:5px;color:var(--tinta)}
+  .campo input{width:100%;padding:10px 14px;border:1px solid var(--linha);border-radius:10px;font:inherit;font-size:.95rem;background:#fff;color:var(--tinta)}
+  .campo input:focus{outline:2px solid var(--sol);outline-offset:1px;border-color:transparent}
+  .captura .btn{width:100%;padding:12px 20px;margin-top:4px}
+  .captura-fechar{position:absolute;top:4px;right:8px;z-index:2;width:30px;height:30px;border:0;border-radius:50%;background:transparent;color:var(--terra);font-size:1.4rem;line-height:1;cursor:pointer}
+  .captura-fechar:hover{background:rgba(43,26,16,.08)}
+  .form-erro{margin-top:10px;font-size:.85rem;color:#9a2a12}
+  .form-erro a{color:inherit}
+  .mel{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
   @media (max-width:560px){
-    .container{padding:0 16px}
+    .container{padding-left:16px;padding-right:16px}
+    .marca{font-size:0;gap:0}
+    .capa-titulo{margin-bottom:28px}
     .secao{padding:72px 0}
     .trilho{grid-auto-columns:72%}
     .comentarios img{flex-basis:190px;width:190px}
@@ -312,33 +364,38 @@
 <!-- ===================== CAPA ===================== -->
 <section class="capa" id="capa">
   <div class="capa-fundo" aria-hidden="true"></div>
+  <div class="capa-selo" aria-hidden="true">
+    <svg class="selo-giro" viewBox="0 0 200 200"><defs><path id="circulo" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs><text><textPath href="#circulo">nossas aventuras · nossas histórias · nossa estrada · </textPath></text></svg>
+    <img src="img/logo.png" alt="" width="520" height="520">
+  </div>
   <div class="container capa-conteudo">
-    <div class="capa-grade">
-      <div>
-        <span class="ao-vivo"><i aria-hidden="true"></i><span id="ao-vivo-texto">Números ao vivo do Instagram</span></span>
-        <h1><span>vai ter</span><span><em>estrada</em></span></h1>
-        <p class="capa-sub"><b>Mídia kit · por Nath e João.</b> Camping, viagens, hospedagens e experiências ao ar livre, contadas do jeito que a gente vive.</p>
-        <div class="capa-botoes">
-          <a class="btn btn-sol" href="#contato">Quero uma parceria</a>
-          <a class="btn btn-claro" href="#bombando">Ver os vídeos que bombaram</a>
+    <div class="capa-titulo">
+      <span class="capa-kit">mídia kit</span>
+      <h1>vai ter <em>estrada</em></h1>
+      <span class="capa-por">por Nath e João</span>
+    </div>
+    <div>
+      <div class="capa-base">
+        <div>
+          <p class="capa-sub">Camping, viagens, hospedagens e experiências ao ar livre, contadas do jeito que a gente vive.</p>
+          <div class="capa-botoes">
+            <a class="btn btn-sol" href="#contato">Quero uma parceria</a>
+            <a class="btn btn-claro" href="#bombando">Ver os vídeos que bombaram</a>
+          </div>
         </div>
       </div>
-      <div class="capa-selo" aria-hidden="true">
-        <svg class="selo-giro" viewBox="0 0 200 200"><defs><path id="circulo" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs><text><textPath href="#circulo">nossas aventuras · nossas histórias · nossa estrada · </textPath></text></svg>
-        <img src="img/logo.png" alt="" width="520" height="520">
-      </div>
-    </div>
     <div class="capa-numeros">
       <div><strong data-num="seguidores">–</strong><span>seguidores no Instagram</span></div>
       <div><strong data-num="views30">–</strong><span>views nos últimos 30 dias</span></div>
       <div><strong data-num="engajamento">–</strong><span>taxa de engajamento</span></div>
       <div><strong data-num="maior">–</strong><span>views no vídeo mais visto</span></div>
     </div>
+    </div>
   </div>
 </section>
 
 <!-- ===================== SOBRE ===================== -->
-<section class="secao sobre" id="sobre">
+<section class="secao sobre" id="sobre" style="padding:72px 0">
   <div class="container">
     <div class="janela revelar">
       <div class="janela-barra"><span class="pontos"><i></i><i></i><i></i></span><span class="url">vaiterestrada / sobre-nós</span></div>
@@ -449,15 +506,19 @@
 
 <!-- ===================== ALÉM DOS NÚMEROS ===================== -->
 <section class="secao alem" id="alem">
-  <div class="container alem-grade">
+  <div class="container">
     <div class="alem-texto revelar">
-      <span class="sobretitulo">Conexão</span>
-      <h2 style="margin-top:14px">Além dos <em>números</em></h2>
-      <p id="numeros-texto"></p>
-      <p class="frase-curta">Os números mostram o alcance. A conexão mostra o impacto.</p>
+      <div>
+        <span class="sobretitulo">Conexão</span>
+        <h2 style="margin-top:14px">Além dos <em>números</em></h2>
+      </div>
+      <div>
+        <p id="numeros-texto"></p>
+        <p class="frase-curta">Os números mostram o alcance. A conexão mostra o impacto.</p>
+      </div>
     </div>
-    <div class="comentarios revelar" id="comentarios" aria-label="Comentários de seguidores"></div>
   </div>
+  <div class="comentarios revelar" id="comentarios" aria-label="Comentários reais de quem acompanha o Vai Ter Estrada"></div>
 </section>
 
 <!-- ===================== PARCERIAS ===================== -->
@@ -470,6 +531,7 @@
       </div>
       <p>Storytelling, review, demonstração e anúncio. Toque pra assistir com som.</p>
     </div>
+    <div class="faixa-marcas" aria-label="Marcas que já gravaram com a gente"><div class="faixa-trilho" id="faixa-marcas"></div></div>
     <div class="parc-grade revelar" id="parc-grade"></div>
   </div>
 </section>
@@ -495,7 +557,31 @@
   </div>
 </footer>
 
-<a class="btn btn-sol flutuante" id="flutuante" href="#contato">💬 Parceria</a>
+<button class="btn btn-sol flutuante" id="flutuante" type="button" aria-haspopup="dialog">💼 Valores e pacotes</button>
+
+<!-- ===================== POP-UP: VALORES E PACOTES =====================
+     Os pedidos chegam no e-mail parceria.vaiterestrada@gmail.com (FormSubmit).
+     Na PRIMEIRA vez, o FormSubmit manda um e-mail pra esse endereço com o
+     botão "Activate Form": clique nele uma vez e pronto. -->
+<div class="captura" id="captura" aria-hidden="true">
+  <div class="janela" role="dialog" aria-modal="true" aria-labelledby="titulo-captura">
+    <div class="janela-barra"><span class="pontos"><i></i><i></i><i></i></span><span class="url">vaiterestrada / valores-e-pacotes</span></div>
+    <button class="captura-fechar" id="fechar-captura" type="button" aria-label="Fechar">×</button>
+    <div class="janela-corpo" id="captura-conteudo">
+      <img class="captura-foto" src="img/barraca-por-do-sol.jpg" alt="" loading="lazy">
+      <span class="sobretitulo">Valores e pacotes</span>
+      <h2 id="titulo-captura">Quer receber nossa <em>proposta?</em></h2>
+      <p class="captura-texto">Deixe seu nome, a marca e o e-mail que a gente te manda os formatos, valores e ideias de conteúdo pra sua marca.</p>
+      <form id="form-captura" novalidate>
+        <div class="campo"><label for="c-nome">Seu nome</label><input id="c-nome" type="text" autocomplete="name" required></div>
+        <div class="campo"><label for="c-marca">Nome da marca</label><input id="c-marca" type="text" autocomplete="organization" required></div>
+        <div class="campo"><label for="c-email">E-mail</label><input id="c-email" type="email" autocomplete="email" required></div>
+        <input class="mel" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn-terra" type="submit">Quero receber</button>
+      </form>
+    </div>
+  </div>
+</div>
 
 <div class="modal" id="modal" aria-hidden="true">
   <div class="modal-caixa" role="dialog" aria-modal="true" aria-label="Vídeo">
@@ -537,7 +623,19 @@ const CONTEUDO_PADRAO = {
     { marca: 'Stanley', formato: 'Anúncio', video: 'https://youtube.com/shorts/lKSGmIx6t-g', capa: 'img/capas/stanley.jpg' },
     { marca: 'Dfense Pro', formato: 'Demonstração', video: 'https://youtube.com/shorts/Dd6Ul6OPgho', capa: 'img/capas/dfense.jpg' }
   ],
-  comentarios: ['img/comentario-1.png', 'img/comentario-2.png', 'img/comentario-3.png', 'img/comentario-4.png', 'img/comentario-5.png'],
+  // comentários reais (copiados dos prints do Instagram)
+  comentarios: [
+    { usuario: 'luceliaoliveiracarrapatoso', texto: 'Cheguei aqui agora, tô pensando em começar a acampar... Amei o insta de vcs! E vcs colocam link das coisas que compram???', tag: '🛒 Quer comprar' },
+    { usuario: 'yaraclopes', texto: 'Tudo tão organizado, dá até vontade de acampar kkkk', tag: '⛺ Deu vontade de acampar' },
+    { usuario: 'lilianoambrozio', texto: 'Qual o link da bolsa dos utensílios, onde comprou?', tag: '🛒 Quer comprar' },
+    { usuario: 'chenrique946', texto: 'Também quero. Vcs tão muito profissa... 👏👏👏', tag: '👏 Elogio' },
+    { usuario: 'vivaliberdadebr', texto: 'Que ideia boaaa 👏👏👏', tag: '💡 Gostou da dica' },
+    { usuario: 'marcia.marquesferreira', texto: 'Onde estão???', tag: '📍 Quer conhecer o lugar' },
+    { usuario: 'marilandiamartins', texto: 'E eu gosto assim 😄 tudo organizado e programado 🥰', tag: '💬 Se identificou' },
+    { usuario: 'diariofamiliaatipica', texto: 'Que dica boa, vou aderir', tag: '💡 Vai usar a dica' },
+    { usuario: 'criandomemorias_camping', texto: 'Adorei seu vídeo, parabéns 👏', tag: '👏 Elogio' },
+    { usuario: 'papodebarraca', texto: 'Dica top', tag: '💡 Gostou da dica' }
+  ],
   contato: { email: 'parceria.vaiterestrada@gmail.com', whatsapp: '5511980869201', cidade: 'São Bernardo do Campo, SP', instagram: 'vaiterestrada', tiktok: 'vaiterestrada' }
 };
 const HISTORICO_PADRAO = [{ dia: '2026-09-07', seguidores: 382 }, { dia: '2026-10-07', seguidores: 677 }];
@@ -723,20 +821,37 @@ function aplicarTikTokEContato(c) {
   $('#tt-sub').textContent = `TikTok · @${tt.usuario || 'vaiterestrada'}${tt.periodo ? ` · ${tt.periodo}` : ''}`;
   $('#rede-tt').href = `https://www.tiktok.com/@${encodeURIComponent(tt.usuario || 'vaiterestrada')}`;
 
-  // comentários
-  $('#comentarios').innerHTML = (c.comentarios || []).map((src, i) => `<img src="${esc(src)}" alt="Print de comentário de seguidor ${i + 1}" loading="lazy" width="369" height="799">`).join('');
+  // comentários: cartão (texto) ou print (imagem enviada pelo painel)
+  const cartao = (k) => typeof k === 'string'
+    ? `<img class="coment-img" src="${esc(k)}" alt="Print de comentário de seguidor" loading="lazy">`
+    : `<article class="coment">
+        <div class="coment-topo"><span class="coment-avatar" aria-hidden="true">${esc(String(k.usuario || '?').replace(/^@/, '').charAt(0))}</span>
+          <span class="coment-user">@${esc(String(k.usuario || '').replace(/^@/, ''))}<small>comentou no Instagram</small></span></div>
+        <p class="coment-texto">${esc(k.texto)}</p>
+        ${k.tag ? `<span class="coment-tag">${esc(k.tag)}</span>` : ''}
+      </article>`;
+  const todos = (c.comentarios || []).filter(Boolean);
+  const filas = [todos.filter((_, i) => i % 2 === 0), todos.filter((_, i) => i % 2 === 1)].filter((f) => f.length);
+  // cada fila aparece duas vezes seguidas, pra emendar sem buraco quando desliza
+  $('#comentarios').innerHTML = filas.map((f, i) => `
+    <div class="coment-fila ${i ? 'volta' : ''}" style="--dur:${45 + f.length * 4}s">${f.map(cartao).join('')}${f.map(cartao).join('').replace(/<article class="coment"/g, '<article class="coment" aria-hidden="true"').replace(/<img class="coment-img"/g, '<img class="coment-img" aria-hidden="true"')}</div>`).join('');
 
   // parcerias
   $('#parc-grade').innerHTML = (c.parcerias || []).map((p, i) => `
     <button class="parc ${/\.(mp4|webm|mov)(\?|$)/i.test(p.video || '') ? 'tem-previa' : ''}" type="button" data-i="${i}" aria-label="Assistir ${esc(p.marca)} (${esc(p.formato || '')})">
+      <div class="parc-topo"><strong>${esc(p.marca)}</strong><span class="formato">${esc(p.formato || '')}</span></div>
       <div class="celular">
         ${p.capa ? `<img src="${esc(p.capa)}" alt="" loading="lazy">` : ''}
         ${/\.(mp4|webm|mov)(\?|$)/i.test(p.video || '') ? `<video muted playsinline loop preload="none" ${p.capa ? `poster="${esc(p.capa)}"` : ''} src="${esc(p.video)}"></video>` : ''}
         <span class="reel-play"><span>${ICONE_PLAY}</span></span>
       </div>
-      <div class="parc-info"><strong>${esc(p.marca)}</strong><span class="formato">${esc(p.formato || '')}</span></div>
     </button>`).join('');
   PARCERIAS = c.parcerias || [];
+  // faixa: nomes das marcas, repetidos pra deslizar sem buraco
+  const nomes = [...new Set(PARCERIAS.map((p) => p.marca).filter(Boolean))];
+  const umaVolta = nomes.map((n) => `<span>${esc(n)}</span>`).join('');
+  $('#faixa-marcas').innerHTML = nomes.length ? umaVolta.repeat(nomes.length < 5 ? 4 : 2) : '';
+  $('#faixa-marcas').closest('.faixa-marcas').hidden = !nomes.length;
   ligarPrevias();
 
   // contato
@@ -771,7 +886,6 @@ function aplicarInstagram(ig, hist) {
     const h = Math.max(0, Math.round((Date.now() - Date.parse(ig.atualizado_em)) / 36e5));
     const quando = h < 1 ? 'há poucos minutos' : h < 24 ? `há ${h} ${h === 1 ? 'hora' : 'horas'}` : `em ${new Date(ig.atualizado_em).toLocaleDateString('pt-BR')}`;
     $('#atualizado').textContent = `Atualizado ${quando}, direto do Instagram.`;
-    $('#ao-vivo-texto').textContent = `Números do Instagram · atualizado ${quando}`;
   }
   desenharTrilho();
   desenharGrafico(hist, ANALISE.seguidores);
@@ -895,23 +1009,89 @@ document.addEventListener('click', (e) => {
   }
   if (e.target.id === 'modal' || e.target.closest('#modal-fechar')) fecharModal();
 });
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && $('#modal').classList.contains('aberto')) fecharModal(); });
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Escape') return;
+  if ($('#modal').classList.contains('aberto')) fecharModal();
+  else if (captura.classList.contains('aberta')) fecharCaptura();
+});
 
-// arrastar os comentários com o mouse
-(() => {
-  const c = $('#comentarios'); let x0 = 0, s0 = 0, arrastando = false;
-  c.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') return; arrastando = true; x0 = e.clientX; s0 = c.scrollLeft; c.style.cursor = 'grabbing'; });
-  addEventListener('pointerup', () => { arrastando = false; c.style.cursor = ''; });
-  c.addEventListener('pointermove', (e) => { if (arrastando) { c.scrollLeft = s0 - (e.clientX - x0); e.preventDefault(); } });
-  c.addEventListener('dragstart', (e) => e.preventDefault());
-})();
+/* ---------- POP-UP "Valores e pacotes" ----------
+   Abre sozinho depois de 7 segundos, uma vez por visita (e nunca por cima
+   de um vídeo aberto). O botão fixo abre a qualquer momento. */
+const EMAIL_DESTINO = 'parceria.vaiterestrada@gmail.com';
+const captura = $('#captura');
+let focoAnterior = null;
+const jaViu = () => { try { return sessionStorage.getItem('vteCapturaVista'); } catch (e) { return null; } };
+const marcarVisto = () => { try { sessionStorage.setItem('vteCapturaVista', '1'); } catch (e) {} };
+function abrirCaptura(forcar) {
+  if (!forcar && jaViu()) return;
+  if (!forcar && $('#modal').classList.contains('aberto')) { setTimeout(() => abrirCaptura(false), 5000); return; }
+  if (captura.classList.contains('aberta')) return;
+  marcarVisto();
+  focoAnterior = document.activeElement;
+  captura.classList.add('aberta');
+  captura.setAttribute('aria-hidden', 'false');
+  setTimeout(() => ($('#c-nome') || $('#fechar-captura')).focus(), 60);
+}
+function fecharCaptura() {
+  captura.classList.remove('aberta');
+  captura.setAttribute('aria-hidden', 'true');
+  if (focoAnterior && focoAnterior.focus) focoAnterior.focus();
+}
+setTimeout(() => abrirCaptura(false), 7000);
+$('#flutuante').addEventListener('click', () => abrirCaptura(true));
+$('#fechar-captura').addEventListener('click', fecharCaptura);
+captura.addEventListener('click', (e) => { if (e.target === captura) fecharCaptura(); });
+// mantém o foco dentro do pop-up enquanto ele está aberto
+captura.addEventListener('keydown', (e) => {
+  if (e.key !== 'Tab') return;
+  const foco = [...captura.querySelectorAll('button, input:not(.mel)')];
+  const prim = foco[0], ult = foco[foco.length - 1];
+  if (e.shiftKey && document.activeElement === prim) { e.preventDefault(); ult.focus(); }
+  else if (!e.shiftKey && document.activeElement === ult) { e.preventDefault(); prim.focus(); }
+});
+$('#form-captura').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const f = e.target;
+  if (!f.checkValidity()) { f.reportValidity(); return; }
+  if (f._honey && f._honey.value) return; // robô
+  const botao = f.querySelector('button[type=submit]');
+  const texto = botao.textContent;
+  botao.disabled = true; botao.textContent = 'Enviando...';
+  let ok = false;
+  try {
+    const r = await fetch(`https://formsubmit.co/ajax/${EMAIL_DESTINO}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        _subject: `Pedido de proposta (mídia kit): ${$('#c-marca').value.trim()}`,
+        _template: 'table', _captcha: 'false',
+        origem: 'Pop-up do mídia kit Vai Ter Estrada',
+        nome: $('#c-nome').value.trim(), marca: $('#c-marca').value.trim(), email: $('#c-email').value.trim(),
+      }),
+    });
+    const j = await r.json().catch(() => ({}));
+    ok = r.ok && String(j.success) === 'true';
+  } catch (erro) { ok = false; }
+  if (!ok) {
+    botao.disabled = false; botao.textContent = texto;
+    let aviso = f.querySelector('.form-erro');
+    if (!aviso) { aviso = document.createElement('p'); aviso.className = 'form-erro'; aviso.setAttribute('role', 'alert'); f.appendChild(aviso); }
+    aviso.innerHTML = `Não deu pra enviar agora. Escreve direto pra <a href="mailto:${EMAIL_DESTINO}">${EMAIL_DESTINO}</a> 💛`;
+    return;
+  }
+  const nome = esc($('#c-nome').value.trim().split(' ')[0]);
+  $('#captura-conteudo').innerHTML = `<span class="sobretitulo">Tudo certo</span><h2 id="titulo-captura">Obrigada, <em>${nome}!</em></h2><p class="captura-texto">Recebemos seu pedido. A gente te responde no e-mail em breve, com a proposta pra sua marca.</p><button class="btn btn-terra" type="button" id="ok-captura">Fechar</button>`;
+  $('#ok-captura').addEventListener('click', fecharCaptura);
+  $('#ok-captura').focus();
+});
 
-// topo e botão flutuante
+// topo e botão fixo "Valores e pacotes" (some na capa e no contato)
 const aoRolar = () => {
   $('#topo').classList.toggle('rolou', scrollY > 40);
   const naCapa = scrollY < innerHeight * .7;
-  const noContato = $('#contato').getBoundingClientRect().top < innerHeight;
-  $('#flutuante').classList.toggle('mostrar', !naCapa && !noContato && innerWidth < 860);
+  const noContato = $('#contato').getBoundingClientRect().top < innerHeight * .6;
+  $('#flutuante').classList.toggle('mostrar', !naCapa && !noContato);
 };
 addEventListener('scroll', aoRolar, { passive: true });
 aoRolar();
