@@ -696,7 +696,8 @@ let IDIOMA = idiomaInicial();
 const T = (pt, en) => (IDIOMA === 'en' ? en : pt);
 const LOCALE = () => (IDIOMA === 'en' ? 'en-US' : 'pt-BR');
 
-const compacto = (n) => new Intl.NumberFormat(LOCALE(), { notation: 'compact', maximumFractionDigits: 1 }).format(n || 0);
+// arredonda pra baixo (64.598 → 64,5 mil), igual aos textos de abordagem do painel ("mais de {alcance}")
+const compacto = (n) => new Intl.NumberFormat(LOCALE(), { notation: 'compact', maximumFractionDigits: 1, roundingMode: 'trunc' }).format(n || 0);
 const inteiro = (n) => Number(n || 0).toLocaleString(LOCALE());
 const pct = (n) => `${Number(n || 0).toLocaleString(LOCALE(), { maximumFractionDigits: 1 })}%`;
 
@@ -756,10 +757,13 @@ function analisar(ig) {
   const views30 = videos30.reduce((t, p) => t + p.views, 0);
   const eng = recentes.length && seg ? recentes.reduce((t, p) => t + p.interacoes / seg, 0) / recentes.length * 100 : 0;
   const comViews = lista.filter((p) => typeof p.views === 'number');
+  // views oficiais do Instagram (todo o conteúdo em 30 dias), o mesmo número das abordagens do painel
+  const oficial = Number(ig?.insights?.views_30d) || 0;
   return {
     perfil, lista,
     seguidores: seg,
-    views30,
+    views30: oficial || views30,
+    viewsOficial: !!oficial,
     posts30: recentes.length,
     mediaViews: videos30.length ? Math.round(views30 / videos30.length) : 0,
     engajamento: eng,
@@ -971,7 +975,9 @@ function aplicarInstagram(ig, hist) {
   preencherNumeros(ANALISE);
   $('#ig-seg').textContent = inteiro(ANALISE.seguidores);
   $('#ig-posts').textContent = `Instagram · @${ANALISE.perfil.usuario || 'vaiterestrada'} · ${ANALISE.perfil.posts || ''} posts`;
-  $('#kpi-posts30').textContent = T(`${ANALISE.posts30} posts nos últimos 30 dias`, `${ANALISE.posts30} posts in the last 30 days`);
+  $('#kpi-posts30').textContent = ANALISE.viewsOficial
+    ? T(`todo o conteúdo · ${ANALISE.posts30} posts novos`, `all content · ${ANALISE.posts30} new posts`)
+    : T(`${ANALISE.posts30} posts nos últimos 30 dias`, `${ANALISE.posts30} posts in the last 30 days`);
   if (ig.atualizado_em) {
     const h = Math.max(0, Math.round((Date.now() - Date.parse(ig.atualizado_em)) / 36e5));
     const dia = new Date(ig.atualizado_em).toLocaleDateString(LOCALE());
